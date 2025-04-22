@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visual Merchandising - Dhayita M. Cintantya</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@300;400;500;600;700&family=Roboto+Mono:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --red: #d83d3e;
+            --black: #121212;
+            --teal: #0cdae0;
+            --green: #1b453c;
+            --light-gray: #e0e0e0;
+            --white: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        
+        body {
+            font-family: 'Roboto Mono', monospace;
+            background-color: var(--black);
+            color: var(--white);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        h1, h2, h3, h4, h5 {
+            font-family: 'Chakra Petch', sans-serif;
+            font-weight: 500;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+        }
+        
+        a {
+            color: var(--teal);
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        a:hover {
+            color: var(--red);
+        }
+        
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 1.5rem 2rem;
+            z-index: 100;
+            background-color: rgba(18, 18, 18, 0.8);
+            backdrop-filter: blur(5px);
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .logo {
+            font-family: 'Chakra Petch', sans-serif;
+            font-size: 1.5rem;
+            color: var(--red);
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo-icon {
+            width: 30px;
+            height: 30px;
+            background-color: var(--red);
+            margin-right: 10px;
+            position: relative;
+        }
+        
+        .logo-icon::before {
+            content: '';
+            position: absolute;
+            width: 50%;
+            height: 50%;
+            top: 25%;
+            left: 25%;
+            background-color: var(--teal);
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 2rem;
+        }
+        
+        .nav-links a {
+            font-family: 'Chakra Petch', sans-serif;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1rem;
+            color: var(--white);
+            position: relative;
+        }
+        
+        .nav-links a:hover {
+            color: var(--teal);
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--red);
+            transition: width 0.3s;
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        /* Mobile menu */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 30px;
+            height: 21px;
+            cursor: pointer;
+        }
+        
+        .menu-toggle span {
+            display: block;
+            width: 100%;
+            height: 3px;
+            background-color: var(--white);
+            transition: all 0.3s;
+        }
+        
+        /* Hero Project */
+        .project-hero {
+            position: relative;
+            height: 70vh;
+            display: flex;
+            align-items: flex-end;
+            background-color: var(--black);
+            overflow: hidden;
+            padding-top: 80px;
+        }
+        
+        .project-hero-img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.7;
+        }
+        
+        .red-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--red);
+            opacity: 0.2;
+            mix-blend-mode: multiply;
+        }
+        
+        .project-hero-content {
+            position: relative;
+            z-index: 2;
+            padding: 3rem 2rem;
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .project-number {
+            font-family: 'Chakra Petch', sans-serif;
+            font-size: 2rem;
+            color: var(--red);
+            margin-bottom: 1rem;
+        }
+        
+        .project-title {
+            font-size: 3.5rem;
+            color: var(--white);
+            margin-bottom: 1rem;
+            max-width: 800px;
+        }
+        
+        .project-subtitle {
+            font-size: 1.5rem;
+            color: var(--teal);
+            margin-bottom: 2rem;
+            font-family: 'Roboto Mono', monospace;
+        }
+        
+        /* Project Content */
+        .project-content {
+            padding: 5rem 0;
+        }
+        
+        .project-section {
+            margin-bottom: 5rem;
+        }
+        
+        .project-section-title {
+            font-size: 2rem;
+            color: var(--red);
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1rem;
+        }
+        
+        .project-text {
+            font-size: 1.1rem;
+            color: var(--white);
+            margin-bottom: 2rem;
+            max-width: 800px;
+        }
+        
+        .project-info-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .project-info-item {
+            border-top: 2px solid var(--teal);
+            padding-top: 1rem;
+        }
+        
+        .project-info-label {
+            font-family: 'Chakra Petch', sans-serif;
+            color: var(--teal);
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+        }
+        
+        .project-info-value {
+            color: var(--white);
+            font-size: 1.1rem;
+        }
+        
+        .project-gallery {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        
+        .project-gallery-item {
+            position: relative;
+            overflow: hidden;
+            height: 400px;
+        }
+        
+        .project-gallery-item.large {
+            grid-column: span 2;
+            height: 600px;
+        }
+        
+        .project-gallery-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .project-gallery-item:hover .project-gallery-img {
+            transform: scale(1.05);
+        }
+        
+        .project-gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 1rem;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            color: var(--white);
+            transform: translateY(100%);
+            transition: transform 0.3s;
+        }
+        
+        .project-gallery-item:hover .project-gallery-caption {
+            transform: translateY(0);
+        }
+        
+        /* Products Section */
+        .products-section {
+            background-color: var(--black);
+            padding: 5rem 0;
+            margin: 5rem 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+        
+        .product-item {
+            text-align: center;
+        }
+        
+        .product-image {
+            width: 100%;
+            height: 200px;
+            object-fit: contain;
+            margin-bottom: 1rem;
+            background-color: rgba(255, 255, 255, 0.05);
+            padding: 1rem;
+        }
+        
+        .product-name {
+            color: var(--teal);
+            margin-bottom: 0.5rem;
+            font-family: 'Chakra Petch', sans-serif;
+            font-size: 1.1rem;
+        }
+        
+        .product-description {
+            color: var(--white);
+            font-size: 0.9rem;
+        }
+        
+        /* Next Project */
+        .next-project {
+            margin: 5rem 0;
+            position: relative;
+            height: 300px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .next-project-img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.5;
+            transition: transform 0.5s;
+        }
+        
+        .next-project:hover .next-project-img {
+            transform: scale(1.05);
+        }
+        
+        .next-project-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+        }
+        
+        .next-project-label {
+            font-size: 1rem;
+            color: var(--teal);
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2rem;
+        }
+        
+        .next-project-title {
+            font-size: 2.5rem;
+            color: var(--white);
+        }
+        
+        /* Footer */
+        footer {
+            padding: 3rem 2rem;
+            background-color: var(--black);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .footer-logo {
+            font-family: 'Chakra Petch', sans-serif;
+            font-size: 1.5rem;
+            color: var(--red);
+        }
+        
+        .footer-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-left: 1.5rem;
+        }
+        
+        .footer-links a {
+            color: var(--white);
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: var(--teal);
+        }
+        
+        .copyright {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.5);
+            margin-top: 1rem;
+            text-align: center;
+        }
+        
+        /* Noise Overlay */
+        .noise {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><filter id="noiseFilter"><feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/><feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.1 0"/></filter><rect width="100%" height="100%" filter="url(%23noiseFilter)"/></svg>');
+            pointer-events: none;
+            z-index: 1000;
+            opacity: 0.03;
+        }
+        
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .project-title {
+                font-size: 3rem;
+            }
+            
+            .project-gallery {
+                grid-template-columns: 1fr;
+            }
+            
+            .project-gallery-item.large {
+                grid-column: span 1;
+            }
+            
+            .project-info-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .products-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .project-title {
+                font-size: 2.5rem;
+            }
+            
+            .menu-toggle {
+                display: flex;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 70%;
+                height: 100vh;
+                background-color: var(--black);
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                transition: right 0.3s;
+            }
+            
+            .nav-links.active {
+                right: 0;
+            }
+            
+            .nav-links li {
+                margin: 1.5rem 0;
+            }
+            
+            .project-info-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .footer-links {
+                margin-top: 1.5rem;
+            }
+            
+            .footer-links li:first-child {
+                margin-left: 0;
+            }
+            
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Noise Overlay -->
+    <div class="noise"></div>
+    
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="../index.html" class="logo">
+                <div class="logo-icon"></div>
+                
+            </a>
+            <div class="menu-toggle" id="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="../index.html#projects">Projects</a></li>
+                <li><a href="../index.html#about">About</a></li>
+                <li><a href="../index.html#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <!-- Project Hero Section -->
+    <section class="project-hero">
+        <img src="../images/fig2.jpeg" alt="Visual Merchandising" class="project-hero-img">
+        <div class="red-overlay"></div>
+        <div class="project-hero-content">
+            <div class="project-number">02.</div>
+            <h1 class="project-title">"Visual Merchandising : Work Compilation"</h1>
+            <p class="project-subtitle">Retail Design</p>
+        </div>
+    </section>
+    
+    <!-- Project Content -->
+    <section class="project-content">
+        <div class="container">
+            <div class="project-info-grid">
+                <div class="project-info-item">
+                    <p class="project-info-label">Year</p>
+                    <p class="project-info-value">2022-2023</p>
+                </div>
+                
+                <div class="project-info-item">
+                    <p class="project-info-label">Client</p>
+                    <p class="project-info-value">IKEA Indonesia</p>
+                </div>
+                
+                <div class="project-info-item">
+                    <p class="project-info-label">Role</p>
+                    <p class="project-info-value">Visual Merchandiser</p>
+                </div>
+            </div>
+            
+            <div class="project-section">
+                <h2 class="project-section-title">Project Overview</h2>
+                <p class="project-text">
+                    A collection of retail design projects from my time interning as a visual 
+                    merchandiser, showcasing my ability to create engaging and strategic store 
+                    layouts. This includes my internship work at IKEA, where I contributed 
+                    to visual merchandising and window displays, as well as a concept 
+                    submission for a café franchise in Indonesia, focusing on branding, 
+                    ambiance, and customer experience.
+                </p>
+            </div>
+            
+            <div class="project-gallery">
+                <div class="project-gallery-item large">
+                    <img src="../images/fig2.jpeg" alt="IKEA Visual Merchandising" class="project-gallery-img">
+                    <div class="project-gallery-caption">
+                        IKEA visual merchandiser assignment themed around celebration, showcasing dining items
+                    </div>
+                </div>
+                
+                <div class="project-gallery-item">
+                    <img src="../images/placeholder-9.jpg" alt="Product Arrangement" class="project-gallery-img">
+                    <div class="project-gallery-caption">
+                        The selection balances sleek minimalism with textured bamboo accents
+                    </div>
+                </div>
+                
+                <div class="project-gallery-item">
+                    <img src="../images/placeholder-10.jpg" alt="IKEA Display" class="project-gallery-img">
+                    <div class="project-gallery-caption">
+                        Bamboo materials were carefully selected to evoke the warmth of an "Indonesian hometown"
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Products Section -->
+    <section class="products-section">
+        <div class="container">
+            <h2 class="project-section-title">IKEA Get Ready to Celebrate</h2>
+            <p class="project-text">
+                IKEA visual merchandiser assignment themed around celebration, showcasing dining 
+                items. A green-toned mood board subtly evokes Eid without direct mention. The selection 
+                balances sleek minimalism with textured bamboo accents, blending Scandinavian 
+                aesthetics with an Indonesian touch.
+            </p>
+            
+            <div class="products-grid">
+                <div class="product-item">
+                    <img src="../images/placeholder-product-1.jpg" alt="DINERA Dining set" class="product-image">
+                    <h3 class="product-name">DINERA</h3>
+                    <p class="product-description">Dining set</p>
+                </div>
+                
+                <div class="product-item">
+                    <img src="../images/placeholder-product-2.jpg" alt="HEDERSAM Scented candle" class="product-image">
+                    <h3 class="product-name">HEDERSAM</h3>
+                    <p class="product-description">Scented candle in glass</p>
+                </div>
+                
+                <div class="product-item">
+                    <img src="../images/placeholder-product-3.jpg" alt="RISTERHULT Pendant lamp" class="product-image">
+                    <h3 class="product-name">RISTERHULT</h3>
+                    <p class="product-description">Pendant lamp, bamboo</p>
+                </div>
+                
+                <div class="product-item">
+                    <img src="../images/placeholder-product-4.jpg" alt="HANDSKALAD Decoration" class="product-image">
+                    <h3 class="product-name">HANDSKALAD</h3>
+                    <p class="product-description">Decoration, hand</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Customer Journey Section -->
+    <section class="project-content">
+        <div class="container">
+            <div class="project-section">
+                <h2 class="project-section-title">Customer Journey</h2>
+                <p class="project-text">
+                    Designing a guided customer journey through four phases to enhance 
+                    understanding of the commercial space and strategically encourage impulse 
+                    purchases. All products used for display and installations were selected carefully 
+                    to align with the theme from variety of IKEA'S dining line.
+                </p>
+            </div>
+            
+            <div class="project-gallery">
+                <div class="project-gallery-item large">
+                    <img src="../images/placeholder-11.jpg" alt="Customer Journey" class="project-gallery-img">
+                    <div class="project-gallery-caption">
+                        The four phases of customer journey: Draw Attention, Bring Awareness, Communicate Their Needs, Create Urgency
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Cafe Front Section -->
+    <section class="project-content">
+        <div class="container">
+            <div class="project-section">
+                <h2 class="project-section-title">Common Grounds Cafe Front</h2>
+                <p class="project-text">
+                    This submission presents a proposal for a coffee shop front entrance designed as both 
+                    a foyer and a window display, showcasing coffee products and merchandise. The color palette 
+                    should reflect the brand logo with rich dark tones and gold accents, complemented by the 
+                    sophisticated ambiance of Common Grounds Zero—featuring dark navy, greyish hues, and natural materials.
+                </p>
+            </div>
+            
+            <div class="project-gallery">
+                <div class="project-gallery-item">
+                    <img src="../images/placeholder-12.jpg" alt="Cafe Front Design" class="project-gallery-img">
+                    <div class="project-gallery-caption">
+                        Cafe entrance design concept
+                    </div>
+                </div>
+                
+                <div class="project-gallery-item">
+                    <img src="../images/placeholder-13.jpg" alt="Merchandising Display" class="project-gallery-img">
+                    <div class="project-gallery-caption">
+                        Ways of displaying merchandise in the coffee shop
+                    </div>
+                </div>
+                
+                <div class="project-gallery-item large">
+                    <img src="../images/placeholder-14.jpg" alt="Installation Concept" class="project-gallery-img">
+                    <div class="project-gallery-caption">
+                        Installation concept to attract the younger generation
+                    </div>
+                </div>
+            </div>
+            
+            <div class="project-section">
+                <h2 class="project-section-title">Design Highlights</h2>
+                <p class="project-text">
+                    The overall design should be minimalistic and modern, yet visually striking enough 
+                    to capture attention and encourage customers to pause and explore. Showcasing products 
+                    and merchandise through an eye-catching window display to attract passersby and draw 
+                    them into the store.
+                </p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Next Project -->
+    <a href="project-back-at-our-place.html" class="next-project">
+        <img src="../images/backatourplace/Enscape_2023-02-08-21-17-42.jpg" alt="Back at Our Place" class="next-project-img">
+        <div class="red-overlay"></div>
+        <div class="next-project-content">
+            <p class="next-project-label">Next Project</p>
+            <h3 class="next-project-title">Back at Our Place</h3>
+        </div>
+    </a>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">Dhayita M. Cintantya</div>
+                <ul class="footer-links">
+                    <li><a href="../index.html#projects">Projects</a></li>
+                    <li><a href="../index.html#about">About</a></li>
+                    <li><a href="../index.html#contact">Contact</a></li>
+                </ul>
+            </div>
+            <p class="copyright">© 2025 Dhayita M. Cintantya. All rights reserved.</p>
+        </div>
+    </footer>
+    
+    <!-- Scripts -->
+    <script>
+        // Mobile Menu Toggle
+        function setupMobileMenu() {
+            const menuToggle = document.getElementById('menu-toggle');
+            const navLinks = document.getElementById('nav-links');
+            
+            menuToggle.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+            });
+            
+            // Close menu when clicking a link
+            const links = document.querySelectorAll('.nav-links a');
+            links.forEach(link => {
+                link.addEventListener('click', () => {
+                    navLinks.classList.remove('active');
+                });
+            });
+        }
+        
+        // Scroll Animation
+        function setupScrollAnimation() {
+            const fadeElements = document.querySelectorAll('.fade-in');
+            
+            const observer = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            fadeElements.forEach(element => {
+                observer.observe(element);
+            });
+        }
+        
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            setupMobileMenu();
+            setupScrollAnimation();
+        });
+    </script>
+</body>
+</html>

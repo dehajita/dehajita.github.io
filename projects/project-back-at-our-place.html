@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Back at Our Place - Dhayita M. Cintantya</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@300;400;500;600;700&family=Roboto+Mono:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --red: #d83d3e;
+            --black: #121212;
+            --teal: #0cdae0;
+            --green: #1b453c;
+            --light-gray: #e0e0e0;
+            --white: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        
+        body {
+            font-family: 'Roboto Mono', monospace;
+            background-color: var(--black);
+            color: var(--white);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        h1, h2, h3, h4, h5 {
+            font-family: 'Chakra Petch', sans-serif;
+            font-weight: 500;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+        }
+        
+        a {
+            color: var(--teal);
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        a:hover {
+            color: var(--red);
+        }
+        
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 1.5rem 2rem;
+            z-index: 100;
+            background-color: rgba(18, 18, 18, 0.8);
+            backdrop-filter: blur(5px);
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .logo {
+            font-family: 'Chakra Petch', sans-serif;
+            font-size: 1.5rem;
+            color: var(--red);
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo-icon {
+            width: 30px;
+            height: 30px;
+            background-color: var(--red);
+            margin-right: 10px;
+            position: relative;
+        }
+        
+        .logo-icon::before {
+            content: '';
+            position: absolute;
+            width: 50%;
+            height: 50%;
+            top: 25%;
+            left: 25%;
+            background-color: var(--teal);
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 2rem;
+        }
+        
+        .nav-links a {
+            font-family: 'Chakra Petch', sans-serif;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1rem;
+            color: var(--white);
+            position: relative;
+        }
+        
+        .nav-links a:hover {
+            color: var(--teal);
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--red);
+            transition: width 0.3s;
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        /* Mobile menu */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 30px;
+            height: 21px;
+            cursor: pointer;
+        }
+        
+        .menu-toggle span {
+            display: block;
+            width: 100%;
+            height: 3px;
+            background-color: var(--white);
+            transition: all 0.3s;
+        }
+        
+        /* Hero Project */
+        .project-hero {
+            position: relative;
+            height: 70vh;
+            display: flex;
+            align-items: flex-end;
+            background-color: var(--black);
+            overflow: hidden;
+            padding-top: 80px;
+        }
+        
+        .project-hero-img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.7;
+        }
+        
+        .red-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--red);
+            opacity: 0.2;
+            mix-blend-mode: multiply;
+        }
+        
+        .project-hero-content {
+            position: relative;
+            z-index: 2;
+            padding: 3rem 2rem;
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .project-number {
+            font-family: 'Chakra Petch', sans-serif;
+            font-size: 2rem;
+            color: var(--red);
+            margin-bottom: 1rem;
+        }
+        
+        .project-title {
+            font-size: 3.5rem;
+            color: var(--white);
+            margin-bottom: 1rem;
+            max-width: 800px;
+        }
+        
+        .project-subtitle {
+            font-size: 1.5rem;
+            color: var(--teal);
+            margin-bottom: 2rem;
+            font-family: 'Roboto Mono', monospace;
+        }
+        
+        /* Project Content */
+        .project-content {
+            padding: 5rem 0;
+        }
+        
+        .project-section {
+            margin-bottom: 5rem;
+        }
+        
+        .project-section-title {
+            font-size: 2rem;
+            color: var(--red);
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1rem;
+        }
+        
+        .project-text {
+            font-size: 1.1rem;
+            color: var(--white);
+            margin-bottom: 2rem;
+            max-width: 800px;
+        }
+        
+        .project-info-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .project-info-item {
+            border-top: 2px solid var(--teal);
+            padding-top: 1rem;
+        }
+        
+        .project-info-label {
+            font-family: 'Chakra Petch', sans-serif;
+            color: var(--teal);
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+        }
+        
+        .project-info-value {
+            color: var(--white);
+            font-size: 1.1rem;
+        }
+        
+        .project-gallery {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        
+        .project-gallery-item {
+            position: relative;
+            overflow: hidden;
+            height: 400px;
+        }
+        
+        .project-gallery-item.large {
+            grid-column: span 2;
+            height: 600px;
+        }
+        
+        .project-gallery-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .project-gallery-item:hover .project-gallery-img {
+            transform: scale(1.05);
+        }
+        
+        .project-gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 1rem;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            color: var(--white);
+            transform: translateY(100%);
+            transition: transform 0.3s;
+        }
+        
+        .project-gallery-item:hover .project-gallery-caption {
+            transform: translateY(0);
+        }
+        
+        /* Floor Plan Section */
+        .floorplan-section {
+            background-color: var(--green);
+            padding: 5rem 0;
+            margin: 5rem 0;
+        }
+        
+        .floorplan-img {
+            width: 100%;
+            margin: 2rem 0;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        /* Mood Board */
+        .mood-board {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+        
+        .mood-item {
+            height: 150px;
+            overflow: hidden;
+        }
+        
+        .mood-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+        
+        .mood-item:hover img {
+            transform: scale(1.1);
+        }
+        
+        /* Color Palette */
+        .color-palette {
+            display: flex;
+            margin: 2rem 0;
+            gap: 1rem;
+        }
+        
+        .color-swatch {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+        }
+        
+        /* Next Project */
+        .next-project {
+            margin: 5rem 0;
+            position: relative;
+            height: 300px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .next-project-img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.5;
+            transition: transform 0.5s;
+        }
+        
+        .next-project:hover .next-project-img {
+            transform: scale(1.05);
+        }
+        
+        .next-project-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+        }
+        
+        .next-project-label {
+            font-size: 1rem;
+            color: var(--teal);
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2rem;
+        }
+        
+        .next-project-title {
+            font-size: 2.5rem;
+            color: var(--white);
+        }
+        
+        /* Footer */
+        footer {
+            padding: 3rem 2rem;
+            background-color: var(--black);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .footer-logo {
+            font-family: 'Chakra Petch', sans-serif;
+            font-size: 1.5rem;
+            color: var(--red);
+        }
+        
+        .footer-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-left: 1.5rem;
+        }
+        
+        .footer-links a {
+            color: var(--white);
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: var(--teal);
+        }
+        
+        .copyright {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.5);
+            margin-top: 1rem;
+            text-align: center;
+        }
+        
+        /* Noise Overlay */
+        .noise {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><filter id="noiseFilter"><feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/><feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.1 0"/></filter><rect width="100%" height="100%" filter="url(%23noiseFilter)"/></svg>');
+            pointer-events: none;
+            z-index: 1000;
+            opacity: 0.03;
+        }
+        
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .project-title {
+                font-size: 3rem;
+            }
+            
+            .project-gallery {
+                grid-template-columns: 1fr;
+            }
+            
+            .project-gallery-item.large {
+                grid-column: span 1;
+            }
+            
+            .project-info-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .mood-board {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .project-title {
+                font-size: 2.5rem;
+            }
+            
+            .menu-toggle {
+                display: flex;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 70%;
+                height: 100vh;
+                background-color: var(--black);
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                transition: right 0.3s;
+            }
+            
+            .nav-links.active {
+                right: 0;
+            }
+            
+            .nav-links li {
+                margin: 1.5rem 0;
+            }
+            
+            .project-info-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .footer-links {
+                margin-top: 1.5rem;
+            }
+            
+            .footer-links li:first-child {
+                margin-left: 0;
+            }
+            
+            .color-palette {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Noise Overlay -->
+    <div class="noise"></div>
+    
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="../index.html" class="logo">
+                <div class="logo-icon"></div>
+                
+            </a>
+            <div class="menu-toggle" id="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="../index.html#projects">Projects</a></li>
+                <li><a href="../index.html#about">About</a></li>
+                <li><a href="../index.html#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <!-- Project Hero Section -->
+    <section class="project-hero">
+        <img src="../images/backatourplace/Enscape_2023-02-08-21-17-42.jpg" alt="Back at Our Place" class="project-hero-img">
+        <div class="red-overlay"></div>
+        <div class="project-hero-content">
+            <div class="project-number">03.</div>
+            <h1 class="project-title">"Back at Our Place"</h1>
+            <p class="project-subtitle">Compact Apartment</p>
+        </div>
+    </section>
+    
+    <!-- Project Content -->
+    <section class="project-content">
+        <div class="container">
+            <div class="project-info-grid">
+                <div class="project-info-item">
+                    <p class="project-info-label">Year</p>
+                    <p class="project-info-value">2023</p>
+                </div>
+                
+                <div class="project-info-item">
+                    <p class="project-info-label">Client</p>
+                    <p class="project-info-value">IKEA Indonesia</p>
+                </div>
+                
+                <div class="project-info-item">
+                    <p class="project-info-label">Role</p>
+                    <p class="project-info-value">Interior Design Specialist (application)</p>
+                </div>
+            </div>
+            
+            <div class="project-section">
+                <h2 class="project-section-title">Project Overview</h2>
+                <p class="project-text">
+                    This project was a submission during my internship at IKEA as part of my 
+                    application for the Interior Design Specialist position. It showcases my 
+                    ability to fulfill clients' needs and craft narratives within spaces based 
+                    on their personal backgrounds. All products used in the project are from 
+                    IKEA's collections, demonstrating my skill in selecting and curating the 
+                    company's merchandise while aligning them with my proposed theme.
+                </p>
+            </div>
+            
+            <div class="project-gallery">
+                <div class="project-gallery-item large">
+                    <img src="../images/placeholder-17.jpg" alt="Apartment Overview" class="project-gallery-img">
+                    <div class="project-gallery-caption">
+                        Overview of the compact apartment design for a family of four
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Concept Section -->
+    <section class="floorplan-section">
+        <div class="container">
+            <h2 class="project-section-title">Concept and Layout</h2>
+            <p class="project-text">
+                A dynamic family of four, Agus is an active 8-year-old, Burhan works 
+                from home and collects vinyl, Ratih balances a PR career with 
+                her love for cooking, and the grandmother visits on weekends.
+            </p>
+            <p class="project-text">
+                The design maximizes flexibility with a private yet well-lit 
+                workspace, vertical kitchen storage, smart organization 
+                for Agus' hobbies, and multifunctional furniture to 
+                accommodate the grandmother's stays.
+            </p>
+            
+            <img src="../images/backatourplace/layout edited.png" alt="Floor Plan" class="floorplan-img">
+            
+            <div class="mood-board">
+                <div class="mood-item">
+                    <img src="../images/placeholder-mood-1.jpg" alt="Mood Board Item">
+                </div>
+                <div class="mood-item">
+                    <img src="../images/placeholder-mood-2.jpg" alt="Mood Board Item">
+                </div>
+                <div class="mood-item">
+                    <img src="../images/placeholder-mood-3.jpg" alt="Mood Board Item">
+                </div>
+                <div class="mood-item">
+                    <img src="../images/placeholder-mood-4.jpg" alt="Mood Board Item">
+                </div>
+                <div class="mood-item">
+                    <img src="../images/placeholder-mood-5.jpg" alt="Mood Board Item">
+                </div>
+                <div class="mood-item">
+                    <img src="../images/placeholder-mood-6.jpg" alt="Mood Board Item">
+                </div>
+            </div>
+            
+            <div class="color-palette">
+                <div class="color-swatch" style="background-color: #e0d4ca;"></div>
+                <div class="color-swatch" style="background-color: #333333;"></div>
+                <div class="color-swatch" style="background-color: #4d6a57;"></div>
+                <div class="color-swatch" style="background-color: #f7ede2;"></div>
+                <div class="color-swatch" style="background-color: #e0bb95;"></div>
+            </div>
+            
+            <p class="project-text" style="margin-top: 2rem;">
+                The design concept focuses on keywords: soft & harmonious, organized, cozy, mindful, and multifunction.
+            </p>
+        </div>
+    </section>
+    
+    <!-- Room Sections -->
+    <section class="project-content">
+        <div class="container">
+            <div class="project-section">
+                <h2 class="project-section-title">Interior Spaces</h2>
+                <p class="project-text">
+                    Each space in the apartment is carefully designed to address the specific needs of the family members 
+                    while ensuring optimal functionality within the compact floor plan.
+                </p>
+            </div>
+            
+            <div class="project-gallery">
+                <div class="project-gallery-item">
+                    <img src="../images/backatourplace/Enscape_2023-02-08-21-22-04.jpg" alt="Workspace" class="project-gallery-img">
+                    <div class="project-gallery-caption">
+                        The workspace is placed to maximize natural light, creating a comfortable environment for working from home.
+                    </div>
+                </div>
+                
+                <div class="project-gallery-item">
+                    <img src="../images/backatourplace/Enscape_2023-02-08-21-27-50.jpg" alt="Storage Solutions" class="project-gallery-img">
+                    <div class="project-gallery-caption">
+                        A towel rack is cleverly used to hang the child's skateboard collection, keeping it easily accessible, organized, and space-efficient.
+                    </div>
+                </div>
+                
+                <div class="project-gallery-item large">
+                    <img src="../images/backatourplace/Enscape_2023-02-08-21-13-15.jpg" alt="Vinyl Collection Storage" class="project-gallery-img">
+                    <!-- <img src="../images/backatourplace/Enscape_2023-02-08-21-17-42.jpg" alt="Picture rails" class="project-gallery-img"> -->
+                    <div class="project-gallery-caption">
+                        Picture rails and shelving units are cleverly used to accommodate the father's vinyl collection, maximizing storage in the compact apartment.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Next Project -->
+    <a href="project-chalet-annecy.html" class="next-project">
+        <img src="../images/chalet/1.jpg" alt="Chalet at Annecy" class="next-project-img">
+        <div class="red-overlay"></div>
+        <div class="next-project-content">
+            <p class="next-project-label">Next Project</p>
+            <h3 class="next-project-title">Chalet at Annecy</h3>
+        </div>
+    </a>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">Dhayita M. Cintantya</div>
+                <ul class="footer-links">
+                    <li><a href="../index.html#projects">Projects</a></li>
+                    <li><a href="../index.html#about">About</a></li>
+                    <li><a href="../index.html#contact">Contact</a></li>
+                </ul>
+            </div>
+            <p class="copyright">© 2025 Dhayita M. Cintantya. All rights reserved.</p>
+        </div>
+    </footer>
+    
+    <!-- Scripts -->
+    <script>
+        // Mobile Menu Toggle
+        function setupMobileMenu() {
+            const menuToggle = document.getElementById('menu-toggle');
+            const navLinks = document.getElementById('nav-links');
+            
+            menuToggle.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+            });
+            
+            // Close menu when clicking a link
+            const links = document.querySelectorAll('.nav-links a');
+            links.forEach(link => {
+                link.addEventListener('click', () => {
+                    navLinks.classList.remove('active');
+                });
+            });
+        }
+        
+        // Scroll Animation
+        function setupScrollAnimation() {
+            const fadeElements = document.querySelectorAll('.fade-in');
+            
+            const observer = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            fadeElements.forEach(element => {
+                observer.observe(element);
+            });
+        }
+        
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            setupMobileMenu();
+            setupScrollAnimation();
+        });
+    </script>
+</body>
+</html>

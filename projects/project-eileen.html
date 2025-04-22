@@ -1,0 +1,1007 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eileen, Eileen, Eileen - Dhayita M. Cintantya</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@300;400;500;600;700&family=Roboto+Mono:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --red: #d83d3e;
+            --black: #121212;
+            --teal: #0cdae0;
+            --green: #1b453c;
+            --light-gray: #e0e0e0;
+            --white: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        
+        body {
+            font-family: 'Roboto Mono', monospace;
+            background-color: var(--black);
+            color: var(--white);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        h1, h2, h3, h4, h5 {
+            font-family: 'Chakra Petch', sans-serif;
+            font-weight: 500;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+        }
+        
+        a {
+            color: var(--teal);
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        a:hover {
+            color: var(--red);
+        }
+        
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 1.5rem 2rem;
+            z-index: 100;
+            background-color: rgba(18, 18, 18, 0.8);
+            backdrop-filter: blur(5px);
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .logo {
+            font-family: 'Chakra Petch', sans-serif;
+            font-size: 1.5rem;
+            color: var(--red);
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo-icon {
+            width: 30px;
+            height: 30px;
+            background-color: var(--red);
+            margin-right: 10px;
+            position: relative;
+        }
+        
+        .logo-icon::before {
+            content: '';
+            position: absolute;
+            width: 50%;
+            height: 50%;
+            top: 25%;
+            left: 25%;
+            background-color: var(--teal);
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 2rem;
+        }
+        
+        .nav-links a {
+            font-family: 'Chakra Petch', sans-serif;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1rem;
+            color: var(--white);
+            position: relative;
+        }
+        
+        .nav-links a:hover {
+            color: var(--teal);
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--red);
+            transition: width 0.3s;
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        /* Mobile menu */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 30px;
+            height: 21px;
+            cursor: pointer;
+        }
+        
+        .menu-toggle span {
+            display: block;
+            width: 100%;
+            height: 3px;
+            background-color: var(--white);
+            transition: all 0.3s;
+        }
+        
+        /* Hero Project */
+        .project-hero {
+            position: relative;
+            height: 70vh;
+            display: flex;
+            align-items: flex-end;
+            background-color: var(--black);
+            overflow: hidden;
+            padding-top: 80px;
+        }
+        
+        .project-hero-img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.7;
+        }
+        
+        .green-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--green);
+            opacity: 0.2;
+            mix-blend-mode: multiply;
+        }
+        
+        .project-hero-content {
+            position: relative;
+            z-index: 2;
+            padding: 3rem 2rem;
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .project-number {
+            font-family: 'Chakra Petch', sans-serif;
+            font-size: 2rem;
+            color: var(--red);
+            margin-bottom: 1rem;
+        }
+        
+        .project-title {
+            font-size: 3.5rem;
+            color: var(--white);
+            margin-bottom: 1rem;
+            max-width: 800px;
+        }
+        
+        .project-subtitle {
+            font-size: 1.5rem;
+            color: var(--teal);
+            margin-bottom: 2rem;
+            font-family: 'Roboto Mono', monospace;
+        }
+        
+        /* Project Content */
+        .project-content {
+            padding: 5rem 0;
+        }
+        
+        .project-section {
+            margin-bottom: 5rem;
+        }
+        
+        .project-section-title {
+            font-size: 2rem;
+            color: var(--red);
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1rem;
+        }
+        
+        .project-text {
+            font-size: 1.1rem;
+            color: var(--white);
+            margin-bottom: 2rem;
+            max-width: 800px;
+        }
+        
+        .project-info-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .project-info-item {
+            border-top: 2px solid var(--teal);
+            padding-top: 1rem;
+        }
+        
+        .project-info-label {
+            font-family: 'Chakra Petch', sans-serif;
+            color: var(--teal);
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+        }
+        
+        .project-info-value {
+            color: var(--white);
+            font-size: 1.1rem;
+        }
+        
+        .project-gallery {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        
+        .project-gallery-item {
+            position: relative;
+            overflow: hidden;
+            height: 400px;
+        }
+        
+        .project-gallery-item.large {
+            grid-column: span 2;
+            height: 600px;
+        }
+        
+        .project-gallery-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .project-gallery-item:hover .project-gallery-img {
+            transform: scale(1.05);
+        }
+        
+        .project-gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 1rem;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            color: var(--white);
+            transform: translateY(100%);
+            transition: transform 0.3s;
+        }
+        
+        .project-gallery-item:hover .project-gallery-caption {
+            transform: translateY(0);
+        }
+        
+        /* Paper Model Section */
+        .paper-model-section {
+            background-color: var(--green);
+            padding: 5rem 0;
+            margin: 5rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .paper-model-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('data:image/svg+xml;utf8,<svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><rect width="1" height="1" fill="%23ffffff" opacity="0.05"/></svg>');
+            background-size: 20px 20px;
+            pointer-events: none;
+        }
+        
+        .paper-model-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        
+        .paper-model-item {
+            background-color: rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            aspect-ratio: 1;
+        }
+        
+        .paper-model-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+        
+        .paper-model-item:hover .paper-model-img {
+            transform: scale(1.05);
+        }
+        
+        /* Narrative Section */
+        .narrative-section {
+            position: relative;
+            padding: 5rem 0;
+            background-color: var(--red);
+            color: var(--white);
+        }
+        
+        .narrative-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .narrative-item {
+            position: relative;
+            height: 300px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .narrative-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+        
+        .narrative-item:hover .narrative-img {
+            transform: scale(1.05);
+        }
+        
+        /* Drawdel Section */
+        .drawdel-section {
+            padding: 5rem 0;
+        }
+        
+        .drawdel-item {
+            position: relative;
+            aspect-ratio: 1/1;
+            overflow: hidden;
+            margin: 2rem 0;
+        }
+        
+        .drawdel-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        /* Next Project */
+        .next-project {
+            margin: 5rem 0;
+            position: relative;
+            height: 300px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .next-project-img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.5;
+            transition: transform 0.5s;
+        }
+        
+        .next-project:hover .next-project-img {
+            transform: scale(1.05);
+        }
+        
+        .next-project-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+        }
+        
+        .next-project-label {
+            font-size: 1rem;
+            color: var(--teal);
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2rem;
+        }
+        
+        .next-project-title {
+            font-size: 2.5rem;
+            color: var(--white);
+        }
+        
+        /* Footer */
+        footer {
+            padding: 3rem 2rem;
+            background-color: var(--black);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .footer-logo {
+            font-family: 'Chakra Petch', sans-serif;
+            font-size: 1.5rem;
+            color: var(--red);
+        }
+        
+        .footer-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-left: 1.5rem;
+        }
+        
+        .footer-links a {
+            color: var(--white);
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: var(--teal);
+        }
+        
+        .copyright {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.5);
+            margin-top: 1rem;
+            text-align: center;
+        }
+        
+        /* Video Container */
+        .video-container {
+            margin: 3rem 0;
+            position: relative;
+            background-color: rgba(0, 0, 0, 0.2);
+            padding: 3rem;
+            border-radius: 5px;
+            text-align: center;
+        }
+        
+        .video-link {
+            display: inline-block;
+            margin-top: 1rem;
+            padding: 0.8rem 1.5rem;
+            background-color: var(--teal);
+            color: var(--black);
+            font-family: 'Chakra Petch', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 0.1rem;
+            border-radius: 3px;
+            transition: background-color 0.3s;
+        }
+        
+        .video-link:hover {
+            background-color: var(--red);
+            color: var(--white);
+        }
+        
+        /* Noise Overlay */
+        .noise {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><filter id="noiseFilter"><feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/><feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.1 0"/></filter><rect width="100%" height="100%" filter="url(%23noiseFilter)"/></svg>');
+            pointer-events: none;
+            z-index: 1000;
+            opacity: 0.03;
+        }
+        
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .project-title {
+                font-size: 3rem;
+            }
+            
+            .project-gallery {
+                grid-template-columns: 1fr;
+            }
+            
+            .project-gallery-item.large {
+                grid-column: span 1;
+            }
+            
+            .project-info-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .paper-model-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .narrative-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .project-title {
+                font-size: 2.5rem;
+            }
+            
+            .menu-toggle {
+                display: flex;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 70%;
+                height: 100vh;
+                background-color: var(--black);
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                transition: right 0.3s;
+            }
+            
+            .nav-links.active {
+                right: 0;
+            }
+            
+            .nav-links li {
+                margin: 1.5rem 0;
+            }
+            
+            .project-info-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .footer-links {
+                margin-top: 1.5rem;
+            }
+            
+            .footer-links li:first-child {
+                margin-left: 0;
+            }
+            
+            .paper-model-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .narrative-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Noise Overlay -->
+    <div class="noise"></div>
+    
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="../index.html" class="logo">
+                <div class="logo-icon"></div>
+                
+            </a>
+            <div class="menu-toggle" id="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="../index.html#projects">Projects</a></li>
+                <li><a href="../index.html#about">About</a></li>
+                <li><a href="../index.html#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <!-- Project Hero Section -->
+    <section class="project-hero">
+        <img src="../images/placeholder-41.jpg" alt="Eileen, Eileen, Eileen" class="project-hero-img">
+        <div class="green-overlay"></div>
+        <div class="project-hero-content">
+            <div class="project-number">06.</div>
+            <h1 class="project-title">"Eileen, Eileen, Eileen"</h1>
+            <p class="project-subtitle">Compilation Work</p>
+        </div>
+    </section>
+    
+    <!-- Project Content -->
+    <section class="project-content">
+        <div class="container">
+            <div class="project-info-grid">
+                <div class="project-info-item">
+                    <p class="project-info-label">Year</p>
+                    <p class="project-info-value">2023</p>
+                </div>
+                
+                <div class="project-info-item">
+                    <p class="project-info-label">Course</p>
+                    <p class="project-info-value">PGID 5021 Rep and Spatial Analysis</p>
+                </div>
+                
+                <div class="project-info-item">
+                    <p class="project-info-label">Mentored by</p>
+                    <p class="project-info-value">Eva Perez de Vega</p>
+                </div>
+            </div>
+            
+            <div class="project-section">
+                <h2 class="project-section-title">Project Overview</h2>
+                <p class="project-text">
+                    A project from my Representation and Spatial Analysis class of the MFA Interior Design 
+                    program, where we study the E1207 house by Eileen Gray and try to represent our 
+                    understanding of her works. The project aimed to uncover how the E1207 house reflects 
+                    Gray's identity as both a woman and an innovative designer of the early 20th century.
+                </p>
+            </div>
+            
+            <div class="project-gallery">
+                <div class="project-gallery-item large">
+                    <img src="../images/placeholder-42.jpg" alt="Eileen Gray's E1207 House" class="project-gallery-img">
+                    <div class="project-gallery-caption">
+                        Representation of Eileen Gray's E1207 House
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Research Section -->
+    <section class="project-content">
+        <div class="container">
+            <div class="project-section">
+                <h2 class="project-section-title">Research and Reframe</h2>
+                <p class="project-text">
+                    Choosing one piece of furniture from the E1207 house and create our 
+                    initial collage based on my understanding of Eileen. I picked the 
+                    satellite mirror and tried to highlight its versatility and ability 
+                    of the mirror to reflect the inside and outside of the house.
+                </p>
+            </div>
+            
+            <div class="project-gallery">
+                <div class="project-gallery-item large">
+                    <img src="../images/eileen/2.pdf" alt="Satellite Mirror Collage" class="project-gallery-img">
+                    <div class="project-gallery-caption">
+                        Collage based on the satellite mirror from E1207 house
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Paper Model Section -->
+    <section class="paper-model-section">
+        <div class="container">
+            <h2 class="project-section-title">Refold and Recreate</h2>
+            <p class="project-text">
+                Part two of the assignment, in which we have to create few differents paper foldings inspired 
+                by the chosen object, in my case the satellite mirror, and build a model of the objet itself with Rhino.
+            </p>
+            
+            <div class="paper-model-grid">
+                <div class="paper-model-item">
+                    <img src="../images/placeholder-44.jpg" alt="Paper Model 1" class="paper-model-img">
+                </div>
+                <div class="paper-model-item">
+                    <img src="../images/placeholder-45.jpg" alt="Paper Model 2" class="paper-model-img">
+                </div>
+                <div class="paper-model-item">
+                    <img src="../images/placeholder-46.jpg" alt="Paper Model 3" class="paper-model-img">
+                </div>
+                <div class="paper-model-item">
+                    <img src="../images/placeholder-47.jpg" alt="Paper Model 4" class="paper-model-img">
+                </div>
+                <div class="paper-model-item">
+                    <img src="../images/placeholder-48.jpg" alt="Paper Model 5" class="paper-model-img">
+                </div>
+                <div class="paper-model-item">
+                    <img src="../images/placeholder-49.jpg" alt="Paper Model 6" class="paper-model-img">
+                </div>
+                <div class="paper-model-item">
+                    <img src="../images/placeholder-50.jpg" alt="Paper Model 7" class="paper-model-img">
+                </div>
+                <div class="paper-model-item">
+                    <img src="../images/placeholder-51.jpg" alt="Paper Model 8" class="paper-model-img">
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Reveal Section -->
+    <section class="project-content">
+        <div class="container">
+            <div class="project-section">
+                <h2 class="project-section-title">Reveal by Unfolding</h2>
+                <p class="project-text">
+                    Unfolding the guest bathroom of house E1027, where the satellite 
+                    mirror is located, to reveal the interiority and the interaction of 
+                    the object within the space.
+                </p>
+            </div>
+            
+            <div class="project-gallery">
+                <div class="project-gallery-item">
+                    <img src="../images/placeholder-52.jpg" alt="Unfolded Space 1" class="project-gallery-img">
+                    <div class="project-gallery-caption">
+                        Unfolding the guest bathroom space
+                    </div>
+                </div>
+                
+                <div class="project-gallery-item">
+                    <img src="../images/placeholder-53.jpg" alt="Unfolded Space 2" class="project-gallery-img">
+                    <div class="project-gallery-caption">
+                        Detailed view of the satellite mirror in context
+                    </div>
+                </div>
+                
+                <div class="project-gallery-item large">
+                    <img src="../images/placeholder-54.jpg" alt="Unfolded Space 3" class="project-gallery-img">
+                    <div class="project-gallery-caption">
+                        Complete unfolded view of the guest bathroom with floor plans
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Expanded Context Section -->
+    <section class="narrative-section">
+        <div class="container">
+            <h2 class="project-section-title">Expanded Context</h2>
+            <p class="project-text">
+                This collage expanded on the story of how Le Corbusier vandalized the 
+                E1027 house with his murals without consent and took credit for the 
+                house, which historians also see as a form of assault on Eileen. I 
+                tried to portray this sense of uneasiness and Corbusier's distorted 
+                view of Eileen as a woman and a designer.
+            </p>
+            
+            <div class="project-gallery" style="margin: 3rem 0 0 0;">
+                <div class="project-gallery-item large" style="height: 500px;">
+                    <img src="../images/eileen/3.jpg" alt="Expanded Context Collage" class="project-gallery-img">
+                </div>
+            </div>
+            
+            <div style="margin-top: 3rem;">
+                <h3 style="color: var(--teal); margin-bottom: 1rem; font-family: 'Chakra Petch', sans-serif;">Ephemeral Interior</h3>
+                <p style="color: var(--white); margin-bottom: 1.5rem;">
+                    Following the collage, we were assigned to create an intervention 
+                    in our chosen space. I took this opportunity to make the psychedelic mirror to extend my understanding of Le Corbusier's assault 
+                    and views of the house and Eileen herself.
+                </p>
+                
+                <div class="narrative-grid">
+                    <div class="narrative-item">
+                        <img src="../images/placeholder-56.jpg" alt="Intervention Drawing 1" class="narrative-img">
+                    </div>
+                    <div class="narrative-item">
+                        <img src="../images/placeholder-57.jpg" alt="Intervention Drawing 2" class="narrative-img">
+                    </div>
+                    <div class="narrative-item">
+                        <img src="../images/placeholder-58.jpg" alt="Intervention Model" class="narrative-img">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Narrative Sequence Section -->
+    <section class="project-content">
+        <div class="container">
+            <div class="project-section">
+                <h2 class="project-section-title">Narrative Sequence</h2>
+                <p class="project-text">
+                    In this part of the assignment, I was tasked with creating a 
+                    series of narrative illustrations inspired by the house. Continuing 
+                    from my previous intervention with the mirror, I depicted how instead of being intruded by a stranger, the house 
+                    formed a retaliation and intruded on the intruder instead. 
+                    Showcasing confusion for the intruder, may it be Le Corbusier 
+                    or everyone else who ever wronged the house.
+                </p>
+                
+                <div class="video-container">
+                    <h3 style="color: var(--teal); margin-bottom: 1rem;">Watch the Animated Narrative</h3>
+                    <p>See the narrative sequence come to life in this animated video.</p>
+                    <a href="https://bit.ly/narrativeanimated" target="_blank" class="video-link">Watch Animation</a>
+                </div>
+            </div>
+            
+            <div class="project-gallery">
+                <div class="project-gallery-item">
+                    <img src="../images/placeholder-59.jpg" alt="Narrative Frame 1" class="project-gallery-img">
+                    <div class="project-gallery-caption">
+                        "DON'T LOOK AT ME"
+                    </div>
+                </div>
+                
+                <div class="project-gallery-item">
+                    <img src="../images/placeholder-60.jpg" alt="Narrative Frame 2" class="project-gallery-img">
+                    <div class="project-gallery-caption">
+                        "LOOK AT YOU!"
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Drawdel Section -->
+    <section class="drawdel-section">
+        <div class="container">
+            <div class="project-section">
+                <h2 class="project-section-title">The Drawdel</h2>
+                <p class="project-text">
+                    The last part of the assignment was to build a physical drawing 
+                    model, which I created bearing the previous forensic interior as 
+                    the main concept. Materials used are cardboard, threads, colored 
+                    papers, and reflective paper.
+                </p>
+                
+                <div class="project-gallery">
+                    <div class="project-gallery-item">
+                        <img src="../images/placeholder-61.jpg" alt="Drawdel Model 1" class="project-gallery-img">
+                        <div class="project-gallery-caption">
+                            Front view of the drawdel model
+                        </div>
+                    </div>
+                    
+                    <div class="project-gallery-item">
+                        <img src="../images/placeholder-62.jpg" alt="Drawdel Model 2" class="project-gallery-img">
+                        <div class="project-gallery-caption">
+                            Detail view showing material exploration
+                        </div>
+                    </div>
+                    
+                    <div class="project-gallery-item large">
+                        <img src="../images/placeholder-63.jpg" alt="Drawdel Model 3" class="project-gallery-img">
+                        <div class="project-gallery-caption">
+                            Multiple views of the drawdel showing different perspectives
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="project-section">
+                <h2 class="project-section-title">Forensic Interior</h2>
+                <p class="project-text">
+                    Eileen Gray's house, E1027, was marred by Le Corbusier's intrusion. 
+                    He vandalized the house with murals during his stay, crossing boundaries 
+                    without her consent. Some historians likened his actions to a form of 
+                    assault. In response, my artwork explores a speculative scenario if the 
+                    house had powers.
+                </p>
+                <p class="project-text">
+                    Using mirrors, I depict Corbusier's distorted reflection, showcasing the 
+                    house intruding upon him, symbolizing Gray's retaliation. The drawings 
+                    of serial sections delve deeper, illustrating Gray's retaliation 
+                    against intruders. The house becomes a trap for Corbusier, symbolized by 
+                    a man (Corbusier), following a woman (Gray), and falling into an endless 
+                    pit created by my Psychedelic Mirror.
+                </p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Next Project (loops back to first project) -->
+    <a href="project-mott-street.html" class="next-project">
+        <img src="../images/fig1.jpg" alt="Meet Me At Mott Street" class="next-project-img">
+        <div class="green-overlay"></div>
+        <div class="next-project-content">
+            <p class="next-project-label">Back to First Project</p>
+            <h3 class="next-project-title">Meet Me At Mott Street</h3>
+        </div>
+    </a>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">Dhayita M. Cintantya</div>
+                <ul class="footer-links">
+                    <li><a href="../index.html#projects">Projects</a></li>
+                    <li><a href="../index.html#about">About</a></li>
+                    <li><a href="../index.html#contact">Contact</a></li>
+                </ul>
+            </div>
+            <p class="copyright">© 2025 Dhayita M. Cintantya. All rights reserved.</p>
+        </div>
+    </footer>
+    
+    <!-- Scripts -->
+    <script>
+        // Mobile Menu Toggle
+        function setupMobileMenu() {
+            const menuToggle = document.getElementById('menu-toggle');
+            const navLinks = document.getElementById('nav-links');
+            
+            menuToggle.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+            });
+            
+            // Close menu when clicking a link
+            const links = document.querySelectorAll('.nav-links a');
+            links.forEach(link => {
+                link.addEventListener('click', () => {
+                    navLinks.classList.remove('active');
+                });
+            });
+        }
+        
+        // Scroll Animation
+        function setupScrollAnimation() {
+            const fadeElements = document.querySelectorAll('.fade-in');
+            
+            const observer = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            fadeElements.forEach(element => {
+                observer.observe(element);
+            });
+        }
+        
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            setupMobileMenu();
+            setupScrollAnimation();
+        });
+    </script>
+</body>
+</html>

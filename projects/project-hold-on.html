@@ -1,0 +1,988 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hold On - Dhayita M. Cintantya</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@300;400;500;600;700&family=Roboto+Mono:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --red: #d83d3e;
+            --black: #121212;
+            --teal: #0cdae0;
+            --green: #1b453c;
+            --light-gray: #e0e0e0;
+            --white: #ffffff;
+            --yellow: #ffe100;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        
+        body {
+            font-family: 'Roboto Mono', monospace;
+            background-color: var(--black);
+            color: var(--white);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        h1, h2, h3, h4, h5 {
+            font-family: 'Chakra Petch', sans-serif;
+            font-weight: 500;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+        }
+        
+        a {
+            color: var(--teal);
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        a:hover {
+            color: var(--red);
+        }
+        
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 1.5rem 2rem;
+            z-index: 100;
+            background-color: rgba(18, 18, 18, 0.8);
+            backdrop-filter: blur(5px);
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .logo {
+            font-family: 'Chakra Petch', sans-serif;
+            font-size: 1.5rem;
+            color: var(--red);
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo-icon {
+            width: 30px;
+            height: 30px;
+            background-color: var(--red);
+            margin-right: 10px;
+            position: relative;
+        }
+        
+        .logo-icon::before {
+            content: '';
+            position: absolute;
+            width: 50%;
+            height: 50%;
+            top: 25%;
+            left: 25%;
+            background-color: var(--teal);
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 2rem;
+        }
+        
+        .nav-links a {
+            font-family: 'Chakra Petch', sans-serif;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1rem;
+            color: var(--white);
+            position: relative;
+        }
+        
+        .nav-links a:hover {
+            color: var(--teal);
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--red);
+            transition: width 0.3s;
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        /* Mobile menu */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 30px;
+            height: 21px;
+            cursor: pointer;
+        }
+        
+        .menu-toggle span {
+            display: block;
+            width: 100%;
+            height: 3px;
+            background-color: var(--white);
+            transition: all 0.3s;
+        }
+        
+        /* Hero Project */
+        .project-hero {
+            position: relative;
+            height: 70vh;
+            display: flex;
+            align-items: flex-end;
+            background-color: var(--black);
+            overflow: hidden;
+            padding-top: 80px;
+        }
+        
+        .project-hero-img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.7;
+        }
+        
+        .yellow-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--yellow);
+            opacity: 0.2;
+            mix-blend-mode: multiply;
+        }
+        
+        .project-hero-content {
+            position: relative;
+            z-index: 2;
+            padding: 3rem 2rem;
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .project-number {
+            font-family: 'Chakra Petch', sans-serif;
+            font-size: 2rem;
+            color: var(--red);
+            margin-bottom: 1rem;
+        }
+        
+        .project-title {
+            font-size: 3.5rem;
+            color: var(--white);
+            margin-bottom: 1rem;
+            max-width: 800px;
+        }
+        
+        .project-subtitle {
+            font-size: 1.5rem;
+            color: var(--teal);
+            margin-bottom: 2rem;
+            font-family: 'Roboto Mono', monospace;
+        }
+        
+        /* Project Content */
+        .project-content {
+            padding: 5rem 0;
+        }
+        
+        .project-section {
+            margin-bottom: 5rem;
+        }
+        
+        .project-section-title {
+            font-size: 2rem;
+            color: var(--red);
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1rem;
+        }
+        
+        .project-text {
+            font-size: 1.1rem;
+            color: var(--white);
+            margin-bottom: 2rem;
+            max-width: 800px;
+        }
+        
+        .project-info-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .project-info-item {
+            border-top: 2px solid var(--teal);
+            padding-top: 1rem;
+        }
+        
+        .project-info-label {
+            font-family: 'Chakra Petch', sans-serif;
+            color: var(--teal);
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+        }
+        
+        .project-info-value {
+            color: var(--white);
+            font-size: 1.1rem;
+        }
+        
+        .project-gallery {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        
+        .project-gallery-item {
+            position: relative;
+            overflow: hidden;
+            height: 400px;
+        }
+        
+        .project-gallery-item.large {
+            grid-column: span 2;
+            height: 600px;
+        }
+        
+        .project-gallery-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .project-gallery-item:hover .project-gallery-img {
+            transform: scale(1.05);
+        }
+        
+        .project-gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 1rem;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            color: var(--white);
+            transform: translateY(100%);
+            transition: transform 0.3s;
+        }
+        
+        .project-gallery-item:hover .project-gallery-caption {
+            transform: translateY(0);
+        }
+        
+        /* Installation Section */
+        .installation-section {
+            background-color: var(--black);
+            position: relative;
+            padding: 5rem 0;
+            margin: 5rem 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .installation-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('../images/placeholder-grid.jpg');
+            background-size: 50px 50px;
+            opacity: 0.05;
+            pointer-events: none;
+        }
+        
+        /* Storyboard Section */
+        .storyboard-section {
+            position: relative;
+            padding: 5rem 0;
+            background-color: var(--red);
+            color: var(--white);
+            overflow: hidden;
+        }
+        
+        .storyboard-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .storyboard-item {
+            background-color: rgba(0, 0, 0, 0.2);
+            padding: 1.5rem;
+            border-radius: 5px;
+        }
+        
+        .storyboard-heading {
+            font-family: 'Chakra Petch', sans-serif;
+            color: var(--teal);
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+        
+        /* Team Section */
+        .team-section {
+            padding: 5rem 0;
+        }
+        
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .team-member {
+            text-align: center;
+        }
+        
+        .team-photo {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin: 0 auto 1.5rem;
+            overflow: hidden;
+        }
+        
+        .team-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .team-name {
+            font-family: 'Chakra Petch', sans-serif;
+            color: var(--teal);
+            margin-bottom: 0.5rem;
+        }
+        
+        .team-role {
+            color: var(--white);
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        
+        /* Next Project */
+        .next-project {
+            margin: 5rem 0;
+            position: relative;
+            height: 300px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .next-project-img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.5;
+            transition: transform 0.5s;
+        }
+        
+        .next-project:hover .next-project-img {
+            transform: scale(1.05);
+        }
+        
+        .next-project-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+        }
+        
+        .next-project-label {
+            font-size: 1rem;
+            color: var(--teal);
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2rem;
+        }
+        
+        .next-project-title {
+            font-size: 2.5rem;
+            color: var(--white);
+        }
+        
+        /* Footer */
+        footer {
+            padding: 3rem 2rem;
+            background-color: var(--black);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .footer-logo {
+            font-family: 'Chakra Petch', sans-serif;
+            font-size: 1.5rem;
+            color: var(--red);
+        }
+        
+        .footer-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-left: 1.5rem;
+        }
+        
+        .footer-links a {
+            color: var(--white);
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: var(--teal);
+        }
+        
+        .copyright {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.5);
+            margin-top: 1rem;
+            text-align: center;
+        }
+        
+        /* Video Container */
+        .video-container {
+            margin: 3rem 0;
+            position: relative;
+            background-color: rgba(0, 0, 0, 0.2);
+            padding: 3rem;
+            border-radius: 5px;
+            text-align: center;
+        }
+        
+        .video-link {
+            display: inline-block;
+            margin-top: 1rem;
+            padding: 0.8rem 1.5rem;
+            background-color: var(--red);
+            color: var(--white);
+            font-family: 'Chakra Petch', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 0.1rem;
+            border-radius: 3px;
+            transition: background-color 0.3s;
+        }
+        
+        .video-link:hover {
+            background-color: var(--teal);
+            color: var(--white);
+        }
+        
+        /* Noise Overlay */
+        .noise {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><filter id="noiseFilter"><feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/><feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.1 0"/></filter><rect width="100%" height="100%" filter="url(%23noiseFilter)"/></svg>');
+            pointer-events: none;
+            z-index: 1000;
+            opacity: 0.03;
+        }
+        
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .project-title {
+                font-size: 3rem;
+            }
+            
+            .project-gallery {
+                grid-template-columns: 1fr;
+            }
+            
+            .project-gallery-item.large {
+                grid-column: span 1;
+            }
+            
+            .project-info-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .storyboard-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .project-title {
+                font-size: 2.5rem;
+            }
+            
+            .menu-toggle {
+                display: flex;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 70%;
+                height: 100vh;
+                background-color: var(--black);
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                transition: right 0.3s;
+            }
+            
+            .nav-links.active {
+                right: 0;
+            }
+            
+            .nav-links li {
+                margin: 1.5rem 0;
+            }
+            
+            .project-info-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .footer-links {
+                margin-top: 1.5rem;
+            }
+            
+            .footer-links li:first-child {
+                margin-left: 0;
+            }
+            
+            .storyboard-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .team-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Noise Overlay -->
+    <div class="noise"></div>
+    
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="../index.html" class="logo">
+                <div class="logo-icon"></div>
+                
+            </a>
+            <div class="menu-toggle" id="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="../index.html#projects">Projects</a></li>
+                <li><a href="../index.html#about">About</a></li>
+                <li><a href="../index.html#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <!-- Project Hero Section -->
+    <section class="project-hero">
+        <img src="../images/placeholder-29.jpg" alt="Hold On" class="project-hero-img">
+        <div class="yellow-overlay"></div>
+        <div class="project-hero-content">
+            <div class="project-number">05.</div>
+            <h1 class="project-title">"Hold On"</h1>
+            <p class="project-subtitle">NYCxDesign How Do You Feel New York</p>
+        </div>
+    </section>
+    
+    <!-- Project Content -->
+    <section class="project-content">
+        <div class="container">
+            <div class="project-info-grid">
+                <div class="project-info-item">
+                    <p class="project-info-label">Year</p>
+                    <p class="project-info-value">2024</p>
+                </div>
+                
+                <div class="project-info-item">
+                    <p class="project-info-label">Exhibition</p>
+                    <p class="project-info-value">NYCxDesign</p>
+                </div>
+                
+                <div class="project-info-item">
+                    <p class="project-info-label">Collaboration</p>
+                    <p class="project-info-value">Anna Zhou, Chiziterem Maduka, Khadeine Ali, Oluwalani Adeoye</p>
+                </div>
+            </div>
+            
+            <div class="project-section">
+                <h2 class="project-section-title">Project Overview</h2>
+                <p class="project-text">
+                    "Hold On" is an immersive installation that confronts the silent epidemic of urban loneliness 
+                    through the metaphor of the New York City subway system. The iconic grab rail, an 
+                    object that provides reassuring stability amid the tumult of each ride, serves as the 
+                    centerpiece. This universal yet intimately shared surface represents the necessary human 
+                    bonds that we must grasp onto to persevere through experiences of isolation in the city.
+                </p>
+                <p class="project-text">
+                    The installation invites participants to walk within a fabric maze that mirrors the veil of 
+                    loneliness separating us from meaningful connections. As participants reach the center of 
+                    the exhibition, the hidden becomes revealed—the grab rail becomes an interactive lighting 
+                    sculpture, its illumination intensifying with each person's touch—a powerful visualization 
+                    of how our individual experiences are interwoven and amplified through collective engagement.
+                </p>
+            </div>
+            
+            <div class="project-gallery">
+                <div class="project-gallery-item large">
+                    <img src="../images/placeholder-30.jpg" alt="Hold On Installation Concept" class="project-gallery-img">
+                    <div class="project-gallery-caption">
+                        Concept visualization of the Hold On installation
+                    </div>
+                </div>
+                
+                <div class="project-gallery-item">
+                    <img src="../images/placeholder-31.jpg" alt="Interactive Rail Detail" class="project-gallery-img">
+                    <div class="project-gallery-caption">
+                        Detail of the interactive grab rail with illumination
+                    </div>
+                </div>
+                
+                <div class="project-gallery-item">
+                    <img src="../images/placeholder-32.jpg" alt="Installation Layout" class="project-gallery-img">
+                    <div class="project-gallery-caption">
+                        Layout of the fabric maze and installation space
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Concept Section -->
+    <section class="installation-section">
+        <div class="container">
+            <div class="project-section">
+                <h2 class="project-section-title">Options & Design Development</h2>
+                <p class="project-text">
+                    We explored multiple approaches to the interactive lighting element that forms the 
+                    centerpiece of our installation. Two primary options were developed:
+                </p>
+            </div>
+            
+            <div class="project-gallery">
+                <div class="project-gallery-item">
+                    <img src="../images/placeholder-33.jpg" alt="Option 1" class="project-gallery-img">
+                    <div class="project-gallery-caption">
+                        Option 1: A tube light is inserted in the grab bar (which would be made of acrylic 
+                        in this case), glowing brighter with each touch, creating an interactive and 
+                        dynamic element within the installation.
+                    </div>
+                </div>
+                
+                <div class="project-gallery-item">
+                    <img src="../images/placeholder-34.jpg" alt="Option 2" class="project-gallery-img">
+                    <div class="project-gallery-caption">
+                        Option 2: An LED strip light is installed on the inner part of the grab bar, glowing 
+                        brighter with each touch, that allows visitor interaction and symbolizes the 
+                        theme of holding on.
+                    </div>
+                </div>
+            </div>
+            
+            <div class="project-section" style="margin-top: 4rem;">
+                <h2 class="project-section-title">Technical Plans</h2>
+                <p class="project-text">
+                    The installation was carefully planned with detailed technical drawings to ensure 
+                    proper construction and functionality of all components.
+                </p>
+            </div>
+            
+            <img src="../images/placeholder-35.jpg" alt="Floor Plan and Elevation" style="width: 100%; margin-top: 2rem;">
+        </div>
+    </section>
+    
+    <!-- Storyboard Section -->
+    <section class="storyboard-section">
+        <div class="container">
+            <h2 class="project-section-title">Storyboard</h2>
+            <p class="project-text">
+                The narrative journey of our installation follows a carefully crafted emotional arc 
+                that takes visitors from isolation to connection.
+            </p>
+            
+            <div class="storyboard-grid">
+                <div class="storyboard-item">
+                    <h3 class="storyboard-heading">Entry: From Strangers</h3>
+                    <p>
+                        Loneliness is a quiet yet lingering feeling that gradually consumes you. 
+                        In a bustling city, amidst the constant presence of people, it's easy for some 
+                        individuals to overlook the depth of their loneliness. The emotional journey within 
+                        this space would likely entail the stark realization that has silently enveloped our daily lives.
+                    </p>
+                </div>
+                
+                <div class="storyboard-item">
+                    <h3 class="storyboard-heading">Focal Point: To Friends</h3>
+                    <p>
+                        As people navigate through the installation, reaching its focal point 
+                        becomes a moment of revelation—a recognition that genuine human 
+                        connection is the true longing. This notion circles back to the theme, 
+                        'Hold On'. Beyond just a symbol of hope, 'Hold On' as in a moment to pause, 
+                        to introspect, and to acknowledge our human vulnerabilities.
+                    </p>
+                </div>
+                
+                <div class="storyboard-item">
+                    <h3 class="storyboard-heading">Exit: And We'll Meet Again</h3>
+                    <p>
+                        Fascinatingly, as this realization sinks in, the visitors eventually find 
+                        themselves back where they began, once again to their loneself. Yet, this 
+                        time marks a renewed perspective on the significance of human 
+                        connection amidst the solitary path of life.
+                    </p>
+                </div>
+            </div>
+            
+            <img src="../images/placeholder-36.jpg" alt="Storyboard Visualization" style="width: 100%; margin-top: 3rem;">
+        </div>
+    </section>
+    
+    <!-- Installation Section -->
+    <section class="project-content">
+        <div class="container">
+            <div class="project-section">
+                <h2 class="project-section-title">Installing and Adapting</h2>
+                <p class="project-text">
+                    When we arrived on-site, we had to adjust our design to fit the significantly reduced dimensions. 
+                    Working within these limitations, we quickly modified our display and lighting concept. 
+                    Throughout the process, we also reached out to the New York MTA to collaborate and integrate 
+                    their subway poles into our installation.
+                </p>
+                <p class="project-text">
+                    With its blend of innovative use of materials and dynamic lighting, our installation 
+                    promises to engage and enchant audiences, offering a unique and memorable experience 
+                    wherever it is showcased.
+                </p>
+            </div>
+            
+            <div class="project-gallery">
+                <div class="project-gallery-item">
+                    <img src="../images/placeholder-37.jpg" alt="Installation Team" class="project-gallery-img">
+                    <div class="project-gallery-caption">
+                        The team working on the installation setup
+                    </div>
+                </div>
+                
+                <div class="project-gallery-item">
+                    <img src="../images/placeholder-38.jpg" alt="Installation Detail" class="project-gallery-img">
+                    <div class="project-gallery-caption">
+                        Detail of the grab rails in the final installation
+                    </div>
+                </div>
+                
+                <div class="project-gallery-item">
+                    <img src="../images/placeholder-39.jpg" alt="Interactive Element" class="project-gallery-img">
+                    <div class="project-gallery-caption">
+                        Testing the interactive lighting elements
+                    </div>
+                </div>
+                
+                <div class="project-gallery-item">
+                    <img src="../images/placeholder-40.jpg" alt="Final Installation" class="project-gallery-img">
+                    <div class="project-gallery-caption">
+                        The completed installation with visitors interacting with the grab rails
+                    </div>
+                </div>
+            </div>
+            
+            <div class="video-container">
+                <h3 style="color: var(--teal); margin-bottom: 1rem;">Watch the Installation in Action</h3>
+                <p>See how visitors interact with the Hold On installation and experience the transformative journey.</p>
+                <a href="https://bit.ly/narrativeanimated" target="_blank" class="video-link">Watch Video</a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Team Section -->
+    <section class="team-section">
+        <div class="container">
+            <div class="project-section">
+                <h2 class="project-section-title">Collaboration Team</h2>
+                <p class="project-text">
+                    This project was a collaborative effort between talented designers who brought 
+                    diverse perspectives and skills to create this immersive installation.
+                </p>
+            </div>
+            
+            <div class="team-grid">
+                <div class="team-member">
+                    <div class="team-photo">
+                        <img src="../images/placeholder-team-1.jpg" alt="Anna Zhou">
+                    </div>
+                    <h3 class="team-name">Anna Zhou</h3>
+                    <p class="team-role">Concept Development</p>
+                </div>
+                
+                <div class="team-member">
+                    <div class="team-photo">
+                        <img src="../images/placeholder-team-2.jpg" alt="Chiziterem Maduka">
+                    </div>
+                    <h3 class="team-name">Chiziterem Maduka</h3>
+                    <p class="team-role">Spatial Design</p>
+                </div>
+                
+                <div class="team-member">
+                    <div class="team-photo">
+                        <img src="../images/placeholder-team-3.jpg" alt="Khadeine Ali">
+                    </div>
+                    <h3 class="team-name">Khadeine Ali</h3>
+                    <p class="team-role">Material Research</p>
+                </div>
+                
+                <div class="team-member">
+                    <div class="team-photo">
+                        <img src="../images/placeholder-team-4.jpg" alt="Oluwalani Adeoye">
+                    </div>
+                    <h3 class="team-name">Oluwalani Adeoye</h3>
+                    <p class="team-role">Technical Implementation</p>
+                </div>
+                
+                <div class="team-member">
+                    <div class="team-photo">
+                        <img src="../images/placeholder-team-5.jpg" alt="Dhayita M. Cintantya">
+                    </div>
+                    <h3 class="team-name">Dhayita M. Cintantya</h3>
+                    <p class="team-role">Visual Communication</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Next Project -->
+    <a href="project-eileen.html" class="next-project">
+        <img src="../images/placeholder-41.jpg" alt="Eileen, Eileen, Eileen" class="next-project-img">
+        <div class="yellow-overlay"></div>
+        <div class="next-project-content">
+            <p class="next-project-label">Next Project</p>
+            <h3 class="next-project-title">Eileen, Eileen, Eileen</h3>
+        </div>
+    </a>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">Dhayita M. Cintantya</div>
+                <ul class="footer-links">
+                    <li><a href="../index.html#projects">Projects</a></li>
+                    <li><a href="../index.html#about">About</a></li>
+                    <li><a href="../index.html#contact">Contact</a></li>
+                </ul>
+            </div>
+            <p class="copyright">© 2025 Dhayita M. Cintantya. All rights reserved.</p>
+        </div>
+    </footer>
+    
+    <!-- Scripts -->
+    <script>
+        // Mobile Menu Toggle
+        function setupMobileMenu() {
+            const menuToggle = document.getElementById('menu-toggle');
+            const navLinks = document.getElementById('nav-links');
+            
+            menuToggle.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+            });
+            
+            // Close menu when clicking a link
+            const links = document.querySelectorAll('.nav-links a');
+            links.forEach(link => {
+                link.addEventListener('click', () => {
+                    navLinks.classList.remove('active');
+                });
+            });
+        }
+        
+        // Scroll Animation
+        function setupScrollAnimation() {
+            const fadeElements = document.querySelectorAll('.fade-in');
+            
+            const observer = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            fadeElements.forEach(element => {
+                observer.observe(element);
+            });
+        }
+        
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            setupMobileMenu();
+            setupScrollAnimation();
+        });
+    </script>
+</body>
+</html>

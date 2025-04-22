@@ -1,0 +1,1383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dhayita M. Cintantya - Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@300;400;500;600;700&family=Roboto+Mono:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --red: #d83d3e;
+            --black: #121212;
+            --teal: #0cdae0;
+            --green: #1b453c;
+            --light-gray: #e0e0e0;
+            --white: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        
+        body {
+            font-family: 'Roboto Mono', monospace;
+            background-color: var(--black);
+            color: var(--white);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        h1, h2, h3, h4, h5 {
+            font-family: 'Chakra Petch', sans-serif;
+            font-weight: 500;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0;
+            position: relative;
+        }
+        
+        a {
+            color: var(--teal);
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        a:hover {
+            color: var(--red);
+        }
+        
+        /* Header Styles */
+        header {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .overlay-text {
+            font-family: 'Chakra Petch', sans-serif;
+            font-size: 10vw;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: var(--teal);
+            opacity: 0.1;
+            white-space: nowrap;
+            z-index: 1;
+            text-transform: uppercase;
+            letter-spacing: 0.3rem;
+        }
+        
+        .header-content {
+            text-align: center;
+            z-index: 2;
+        }
+        
+        .header-title {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            color: var(--red);
+            text-transform: uppercase;
+            line-height: 1.2;
+        }
+        
+        .header-subtitle {
+            font-size: 1.8rem;
+            margin-bottom: 2rem;
+            color: var(--teal);
+        }
+        
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 1.5rem 2rem;
+            z-index: 100;
+            background-color: rgba(18, 18, 18, 0.8);
+            backdrop-filter: blur(5px);
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .logo {
+            font-family: 'Chakra Petch', sans-serif;
+            font-size: 1.5rem;
+            color: var(--red);
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo-icon {
+            width: 30px;
+            height: 30px;
+            background-color: var(--red);
+            margin-right: 10px;
+            position: relative;
+        }
+        
+        .logo-icon::before {
+            content: '';
+            position: absolute;
+            width: 50%;
+            height: 50%;
+            top: 25%;
+            left: 25%;
+            background-color: var(--teal);
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 2rem;
+        }
+        
+        .nav-links a {
+            font-family: 'Chakra Petch', sans-serif;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1rem;
+            color: var(--white);
+            position: relative;
+        }
+        
+        .nav-links a:hover {
+            color: var(--teal);
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--red);
+            transition: width 0.3s;
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        /* Mobile menu */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 30px;
+            height: 21px;
+            cursor: pointer;
+        }
+        
+        .menu-toggle span {
+            display: block;
+            width: 100%;
+            height: 3px;
+            background-color: var(--white);
+            transition: all 0.3s;
+        }
+        
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            background-color: var(--black);
+            overflow: hidden;
+        }
+        
+        .hero-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.3;
+            object-fit: cover;
+            z-index: 1;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            max-width: 800px;
+            padding: 0 2rem;
+        }
+        
+        .hero-title {
+            font-size: 5rem;
+            margin-bottom: 1rem;
+            color: var(--teal);
+            text-transform: lowercase;
+            line-height: 1;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            color: var(--white);
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background-color: var(--red);
+            color: var(--white);
+            font-family: 'Chakra Petch', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 0.2rem;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        
+        .btn:hover {
+            background-color: var(--teal);
+            transform: translateY(-5px);
+        }
+        
+        /* Project Grid */
+        .projects {
+            padding: 6rem 2rem;
+            background-color: var(--black);
+        }
+        
+        .section-title {
+            font-size: 3rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--red);
+            text-transform: uppercase;
+            letter-spacing: 0.2rem;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background-color: var(--teal);
+        }
+        
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .project-card {
+            position: relative;
+            background-color: var(--black);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        .project-image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .project-card:hover .project-image {
+            transform: scale(1.05);
+        }
+        
+        .project-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.8));
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 1.5rem;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        
+        .project-card:hover .project-overlay {
+            opacity: 1;
+        }
+        
+        .project-number {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            font-family: 'Chakra Petch', sans-serif;
+            font-size: 2rem;
+            color: var(--red);
+            opacity: 0.8;
+        }
+        
+        .project-title {
+            font-size: 1.5rem;
+            color: var(--white);
+            margin-bottom: 0.5rem;
+        }
+        
+        .project-category {
+            font-family: 'Roboto Mono', monospace;
+            font-size: 0.9rem;
+            color: var(--teal);
+            margin-bottom: 1rem;
+        }
+        
+        .project-description {
+            font-size: 0.9rem;
+            color: var(--white);
+            opacity: 0.8;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s;
+        }
+        
+        .project-card:hover .project-description {
+            max-height: 100px;
+        }
+        
+        /* About Section */
+        .about {
+            padding: 6rem 2rem;
+            background-color: var(--green);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .about-pattern {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><circle cx="10" cy="10" r="1" fill="%23ffffff" opacity="0.1"/></svg>');
+            opacity: 0.05;
+        }
+        
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .about-title {
+            font-size: 3rem;
+            color: var(--red);
+            margin-bottom: 2rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2rem;
+        }
+        
+        .about-text {
+            font-size: 1.1rem;
+            color: var(--white);
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+        
+        .about-quote {
+            font-family: 'Chakra Petch', sans-serif;
+            font-size: 1.5rem;
+            color: var(--teal);
+            margin: 3rem 0;
+            padding-left: 2rem;
+            border-left: 3px solid var(--red);
+        }
+        
+        /* Contact Section */
+        .contact {
+            padding: 6rem 2rem;
+            background-color: var(--black);
+            position: relative;
+        }
+        
+        .contact-content {
+            max-width: 800px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .contact-title {
+            font-size: 3rem;
+            color: var(--red);
+            margin-bottom: 2rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2rem;
+        }
+        
+        .contact-text {
+            font-size: 1.1rem;
+            color: var(--white);
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+        
+        .contact-form {
+            width: 100%;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--teal);
+            font-family: 'Chakra Petch', sans-serif;
+        }
+        
+        .form-input,
+        .form-textarea {
+            width: 100%;
+            padding: 1rem;
+            background-color: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--white);
+            font-family: 'Roboto Mono', monospace;
+            transition: border-color 0.3s;
+        }
+        
+        .form-input:focus,
+        .form-textarea:focus {
+            outline: none;
+            border-color: var(--teal);
+        }
+        
+        .form-textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        /* Footer */
+        footer {
+            padding: 3rem 2rem;
+            background-color: var(--black);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .footer-logo {
+            font-family: 'Chakra Petch', sans-serif;
+            font-size: 1.5rem;
+            color: var(--red);
+        }
+        
+        .footer-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-left: 1.5rem;
+        }
+        
+        .footer-links a {
+            color: var(--white);
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: var(--teal);
+        }
+        
+        .copyright {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.5);
+            margin-top: 1rem;
+            text-align: center;
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 1024px) {
+            .projects-grid {
+                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header-title {
+                font-size: 3rem;
+            }
+            
+            .header-subtitle {
+                font-size: 1.5rem;
+            }
+            
+            .hero-title {
+                font-size: 3.5rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .menu-toggle {
+                display: flex;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 70%;
+                height: 100vh;
+                background-color: var(--black);
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                transition: right 0.3s;
+            }
+            
+            .nav-links.active {
+                right: 0;
+            }
+            
+            .nav-links li {
+                margin: 1.5rem 0;
+            }
+            
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .footer-links {
+                margin-top: 1.5rem;
+            }
+            
+            .footer-links li:first-child {
+                margin-left: 0;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .header-title {
+                font-size: 2.5rem;
+            }
+            
+            .header-subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1rem;
+            }
+            
+            .section-title {
+                font-size: 2.5rem;
+            }
+            
+            .about-title {
+                font-size: 2.5rem;
+            }
+            
+            .contact-title {
+                font-size: 2.5rem;
+            }
+            
+            .btn {
+                padding: 0.8rem 1.5rem;
+                font-size: 0.9rem;
+            }
+        }
+        
+        /* Background Slideshow */
+        .bg-slideshow {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            opacity: 0.1;
+        }
+        
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            opacity: 0;
+            transition: opacity 1.5s ease-in-out;
+        }
+        
+        .slide.active {
+            opacity: 1;
+        }
+        
+        /* Project Details */
+        .project-section {
+            padding: 8rem 2rem 6rem;
+            background-color: var(--black);
+        }
+        
+        .project-detail {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .project-header {
+            margin-bottom: 4rem;
+            text-align: center;
+        }
+        
+        .project-detail-title {
+            font-size: 3rem;
+            color: var(--red);
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+        }
+        
+        .project-detail-subtitle {
+            font-size: 1.5rem;
+            color: var(--teal);
+            margin-bottom: 2rem;
+            font-family: 'Roboto Mono', monospace;
+        }
+        
+        .project-detail-info {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-bottom: 2rem;
+        }
+        
+        .project-info-item {
+            text-align: center;
+        }
+        
+        .project-info-label {
+            font-family: 'Chakra Petch', sans-serif;
+            color: var(--white);
+            margin-bottom: 0.5rem;
+        }
+        
+        .project-info-value {
+            color: var(--teal);
+        }
+        
+        .project-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+        
+        .project-image-container {
+            grid-column: 1 / -1;
+        }
+        
+        .project-detail-image {
+            width: 100%;
+            height: auto;
+            margin-bottom: 2rem;
+        }
+        
+        .project-description-container {
+            grid-column: 1 / -1;
+        }
+        
+        .project-description-title {
+            font-size: 2rem;
+            color: var(--red);
+            margin-bottom: 1.5rem;
+        }
+        
+        .project-description-text {
+            color: var(--white);
+            line-height: 1.8;
+            margin-bottom: 2rem;
+        }
+        
+        /* Custom Cursor */
+        .cursor {
+            position: fixed;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: var(--teal);
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+            mix-blend-mode: difference;
+            z-index: 9999;
+            transition: width 0.3s, height 0.3s, background-color 0.3s;
+        }
+        
+        .cursor.expand {
+            width: 50px;
+            height: 50px;
+            background-color: var(--red);
+        }
+        
+        /* Background Noise */
+        .noise {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><filter id="noiseFilter"><feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/><feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.1 0"/></filter><rect width="100%" height="100%" filter="url(%23noiseFilter)"/></svg>');
+            pointer-events: none;
+            z-index: 1000;
+            opacity: 0.03;
+        }
+
+        /* Project blocks styling */
+        .project-blocks {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2px;
+            margin-top: 4rem;
+        }
+
+        .project-block {
+            position: relative;
+            height: 300px;
+            overflow: hidden;
+            background-color: var(--black);
+        }
+
+        .project-block img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .project-block:hover img {
+            transform: scale(1.05);
+        }
+
+        .project-block-content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 1.5rem;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+
+        .project-block:hover .project-block-content {
+            transform: translateY(0);
+        }
+
+        .project-block-number {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            font-family: 'Chakra Petch', sans-serif;
+            font-size: 2rem;
+            color: var(--red);
+        }
+
+        .project-block-title {
+            font-family: 'Chakra Petch', sans-serif;
+            font-size: 1.2rem;
+            color: var(--white);
+            margin-bottom: 0.5rem;
+        }
+
+        .project-block-category {
+            font-family: 'Roboto Mono', monospace;
+            font-size: 0.8rem;
+            color: var(--teal);
+        }
+
+        .project-block.featured {
+            grid-column: span 2;
+            grid-row: span 2;
+            height: auto;
+        }
+
+        /* Section styling inspired by the PDF */
+        .section-red {
+            background-color: var(--red);
+            padding: 6rem 2rem;
+            color: var(--white);
+        }
+
+        .section-green {
+            background-color: var(--green);
+            padding: 6rem 2rem;
+            color: var(--white);
+        }
+
+        .section-black {
+            background-color: var(--black);
+            padding: 6rem 2rem;
+            color: var(--white);
+        }
+
+        /* Project grid layout inspired by PDF page 2 */
+        .category-header {
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px solid var(--teal);
+            padding-bottom: 1rem;
+            margin-bottom: 3rem;
+            color: var(--teal);
+            font-family: 'Chakra Petch', sans-serif;
+        }
+
+        .category-title {
+            font-size: 1.2rem;
+            text-transform: uppercase;
+        }
+
+        .portfolio-categories {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 4rem;
+        }
+
+        .category-item {
+            text-align: center;
+            flex: 1;
+            border-top: 2px solid var(--teal);
+            padding-top: 1rem;
+            margin: 0 1rem;
+        }
+
+        .category-item h3 {
+            color: var(--teal);
+            margin-bottom: 0.5rem;
+            font-family: 'Chakra Petch', sans-serif;
+        }
+
+        /* Circle image frames from PDF */
+        .circle-frame {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 2px solid var(--red);
+            margin: 0 auto 2rem;
+        }
+
+        .circle-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Page transitions */
+        .page-transition {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--red);
+            z-index: 9998;
+            transform: translateY(100%);
+            transition: transform 0.5s;
+        }
+
+        .page-transition.active {
+            transform: translateY(0);
+        }
+
+        /* Scroll animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Red overlay for project images like in PDF */
+        .red-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--red);
+            opacity: 0.3;
+            mix-blend-mode: multiply;
+            transition: opacity 0.3s;
+        }
+
+        .project-card:hover .red-overlay {
+            opacity: 0.5;
+        }
+    </style>
+</head>
+<body>
+    <!-- Noise Overlay -->
+    <div class="noise"></div>
+    
+    <!-- Custom Cursor -->
+    <div class="cursor"></div>
+    
+    <!-- Page Transition -->
+    <div class="page-transition"></div>
+    
+    <!-- Background Slideshow -->
+    <div class="bg-slideshow" id="bg-slideshow">
+        <!-- Slides will be added via JavaScript -->
+    </div>
+    
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <div class="logo-icon"></div>
+                Dhayita Cintantya
+            </a>
+            <div class="menu-toggle" id="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="overlay-text">Interior Design</div>
+        <div class="hero-content">
+            <h1 class="hero-title">don't look at me,<br>look at you!</h1>
+            <p class="hero-subtitle">a portfolio</p>
+            <a href="#projects" class="btn">View Projects</a>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">Dhayita M. Cintantya</div>
+                <ul class="footer-links">
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+            <p class="copyright">© 2025 Dhayita M. Cintantya. All rights reserved.</p>
+        </div>
+    </footer>
+    
+    <!-- Scripts -->
+    <script>
+        // Background Slideshow
+        function setupBackgroundSlideshow() {
+            const slideshowContainer = document.getElementById('bg-slideshow');
+            const images = [
+                'images/fig1.jpg',
+                'images/fig2.jpeg',
+                'images/chalet/1.jpg' // Replace with your third image
+            ];
+            
+            // Create slides from the images
+            images.forEach((imageSrc, index) => {
+                const slide = document.createElement('div');
+                slide.className = `slide ${index === 0 ? 'active' : ''}`;
+                slide.style.backgroundImage = `url(${imageSrc})`;
+                slideshowContainer.appendChild(slide);
+            });
+            
+            // Change slide every 5 seconds
+            let currentSlide = 0;
+            const slides = document.querySelectorAll('.slide');
+            
+            setInterval(() => {
+                slides[currentSlide].classList.remove('active');
+                currentSlide = (currentSlide + 1) % slides.length;
+                slides[currentSlide].classList.add('active');
+            }, 5000);
+        }
+        
+        // Mobile Menu Toggle
+        function setupMobileMenu() {
+            const menuToggle = document.getElementById('menu-toggle');
+            const navLinks = document.getElementById('nav-links');
+            
+            menuToggle.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+            });
+            
+            // Close menu when clicking a link
+            const links = document.querySelectorAll('.nav-links a');
+            links.forEach(link => {
+                link.addEventListener('click', () => {
+                    navLinks.classList.remove('active');
+                });
+            });
+        }
+        
+        // Custom Cursor
+        function setupCustomCursor() {
+            const cursor = document.querySelector('.cursor');
+            
+            document.addEventListener('mousemove', (e) => {
+                cursor.style.left = e.clientX + 'px';
+                cursor.style.top = e.clientY + 'px';
+            });
+            
+            // Expand cursor on hover over links and buttons
+            const interactiveElements = document.querySelectorAll('a, button, .project-card, .btn');
+            interactiveElements.forEach(element => {
+                element.addEventListener('mouseenter', () => {
+                    cursor.classList.add('expand');
+                });
+                
+                element.addEventListener('mouseleave', () => {
+                    cursor.classList.remove('expand');
+                });
+            });
+        }
+        
+        // Scroll Animation
+        function setupScrollAnimation() {
+            const fadeElements = document.querySelectorAll('.fade-in');
+            
+            const observer = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            fadeElements.forEach(element => {
+                observer.observe(element);
+            });
+        }
+        
+        // Page Transitions
+        function setupPageTransitions() {
+            const pageTransition = document.querySelector('.page-transition');
+            const links = document.querySelectorAll('a[href^="#"]');
+            
+            links.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const target = document.querySelector(e.currentTarget.getAttribute('href'));
+                    
+                    pageTransition.classList.add('active');
+                    
+                    setTimeout(() => {
+                        window.scrollTo({
+                            top: target.offsetTop,
+                            behavior: 'instant'
+                        });
+                        
+                        setTimeout(() => {
+                            pageTransition.classList.remove('active');
+                        }, 500);
+                    }, 500);
+                });
+            });
+        }
+        
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            setupBackgroundSlideshow();
+            setupMobileMenu();
+            setupCustomCursor();
+            setupScrollAnimation();
+            setupPageTransitions();
+        });
+    </script>
+    
+    <!-- Projects Categories -->
+    <section class="section-black">
+        <div class="container">
+            <div class="portfolio-categories">
+                <div class="category-item">
+                    <h3>public + commercial</h3>
+                </div>
+                <div class="category-item">
+                    <h3>residential + hospitality</h3>
+                </div>
+                <div class="category-item">
+                    <h3>conceptual + speculative</h3>
+                </div>
+            </div>
+            
+            <!-- Featured Project Section -->
+            <!-- <div class="project-detail fade-in">
+                <div class="project-header">
+                    <h2 class="project-detail-title">01. "Meet Me At Mott Street"</h2>
+                    <h3 class="project-detail-subtitle">Temporary Public Space</h3>
+                </div>
+                
+                <div class="project-content">
+                    <div class="project-image-container">
+                        <img src="images/fig1.jpg" alt="Meet Me At Mott Street Project" class="project-detail-image">
+                    </div>
+                    
+                    <div class="project-description-container">
+                        <h3 class="project-description-title">Project Overview</h3>
+                        <p class="project-description-text">
+                            For my Design Studio II project, I explored the use of public spaces 
+                            in Chinatown by street vendors and local retailers utilizing temporary 
+                            furniture. The project focuses on repurposing waste plastics and 
+                            fabrics from nearby businesses to create a new type of public furniture.
+                        </p>
+                        <p class="project-description-text">
+                            The versatility and lightweight nature of these materials allow 
+                            visitors to "build and stack" the furniture according to their needs. 
+                            I envision this project taking place every weekend, in collaboration with 
+                            Think! Chinatown. By involving the community, the project aims to foster 
+                            a sense of ownership and create a meaningful experience.
+                        </p>
+                    </div>
+                    
+                    <div class="project-image-container">
+                        <img src="/api/placeholder/800/500" alt="Meet Me At Mott Street Concept" class="project-detail-image">
+                    </div>
+                    
+                    <div class="project-description-container">
+                        <h3 class="project-description-title">Concept and Collages</h3>
+                        <p class="project-description-text">
+                            The project focuses on Mott Street, where fruit sellers use sidewalk space to showcase 
+                            their goods using reused materials, including cardboard, crates, and styrofoam cartons, as 
+                            their makeshift furniture. Inspired by this, this project tries to find out the connection 
+                            between indoor activities adapted to outdoor public places using makeshift furniture while 
+                            addressing the problem of waste abundance in the area.
+                        </p>
+                    </div>
+                </div>
+            </div> -->
+        </div>
+    </section>
+    
+    <!-- About Section -->
+    <section class="section-green" id="about">
+        <div class="about-pattern"></div>
+        <div class="container">
+            <div class="about-content fade-in">
+                <h2 class="about-title">About Me</h2>
+                <p class="about-text">
+                    I'm an MFA Interior Design student, passionate about crafting narrative-driven spaces that highlight 
+                    cultures and human connections. I often draw inspiration from my heritage and my love for writing, 
+                    weaving these elements into immersive designs that focus on storytelling.
+                </p>
+                <div class="about-quote">
+                    "So be patient, with gracious patience." <br>
+                    <small>- Surah Al Ma'arij | V 5</small>
+                </div>
+                <p class="about-text">
+                    I hope to continue learning and creating interiors that evoke emotion and foster meaningful experience. 
+                    I am eager to continue learning and expanding my skill set.
+                </p>
+                
+                <!-- Education and Experience -->
+                <div class="education-section fade-in">
+                    <h3 class="project-description-title" style="color: var(--red); margin-top: 3rem;">Education</h3>
+                    <div style="margin-bottom: 2rem;">
+                        <h4 style="color: var(--white);">Parsons School of Design</h4>
+                        <p style="color: var(--teal);">MFA Interior Design | 2023-2025</p>
+                    </div>
+                    <div>
+                        <h4 style="color: var(--white);">Bandung Institute of Technology</h4>
+                        <p style="color: var(--teal);">Bachelor of Architecture | 2017-2021</p>
+                    </div>
+                </div>
+                
+                <div class="experience-section fade-in">
+                    <h3 class="project-description-title" style="color: var(--red); margin-top: 3rem;">Experience</h3>
+                    <div style="margin-bottom: 1.5rem;">
+                        <h4 style="color: var(--white);">Junior Designer | Freelance</h4>
+                        <p style="color: var(--teal);">December 2024 - present | The Live Design Project</p>
+                    </div>
+                    <div style="margin-bottom: 1.5rem;">
+                        <h4 style="color: var(--white);">Architecture / Interior Design Intern | Part-time</h4>
+                        <p style="color: var(--teal);">November 2024 - present | Studio Gia Wolff</p>
+                    </div>
+                    <div style="margin-bottom: 1.5rem;">
+                        <h4 style="color: var(--white);">Shop Design & Activity | Internship</h4>
+                        <p style="color: var(--teal);">June - May 2023 | IKEA Indonesia</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="contact-content fade-in">
+                <h2 class="contact-title">Get In Touch</h2>
+                <p class="contact-text">Feel free to reach out for collaborations or just a friendly hello</p>
+                
+                <div class="contact-form">
+                    <div class="form-group">
+                        <label for="name" class="form-label">Name</label>
+                        <input type="text" id="name" class="form-input" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" id="email" class="form-input" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message" class="form-label">Message</label>
+                        <textarea id="message" class="form-textarea" required></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn">Send Message</button>
+                </div>
+                
+                <div style="margin-top: 3rem; text-align: center;">
+                    <p style="color: var(--teal); margin-bottom: 0.5rem;">Email</p>
+                    <p style="color: var(--white); margin-bottom: 2rem;">yitadhayita@gmail.com</p>
+                    
+                    <p style="color: var(--teal); margin-bottom: 0.5rem;">Social</p>
+                    <div style="display: flex; justify-content: center; gap: 2rem;">
+                        <a href="https://instagram.com/die_si_gn" target="_blank" style="color: var(--white);">Instagram</a>
+                        <a href="https://linkedin.com/in/dhayitamc" target="_blank" style="color: var(--white);">LinkedIn</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Projects Section -->
+    <section class="projects" id="projects">
+        <div class="container">
+            <h2 class="section-title">Projects</h2>
+            
+            <!-- Project Blocks layout inspired by PDF page 2 -->
+            <div class="project-blocks">
+                <div class="project-block featured">
+                    <div class="project-block-number">01.</div>
+                    <a href="projects/project-mott-street.html">
+                        <img src="images/fig1.jpg" alt="Meet Me At Mott Street">
+                        <div class="red-overlay"></div>
+                        <div class="project-block-content">
+                            <h3 class="project-block-title">Meet Me At Mott Street</h3>
+                            <p class="project-block-category">Temporary Public Space</p>
+                        </div>
+                    </a>
+                </div>
+                
+                <div class="project-block">
+                    <div class="project-block-number">02.</div>
+                    <a href="projects/project-visual-merchandising.html">
+                        <img src="images/fig2.jpeg" alt="Visual Merchandising">
+                        <div class="red-overlay"></div>
+                        <div class="project-block-content">
+                            <h3 class="project-block-title">Visual Merchandising</h3>
+                            <p class="project-block-category">Retail Design</p>
+                        </div>
+                    </a>
+                </div>
+                
+                <div class="project-block">
+                    <div class="project-block-number">03.</div>
+                    <a href="projects/project-back-at-our-place.html">
+                        <img src="images/backatourplace/Enscape_2023-02-08-21-17-42.jpg" alt="Back at Our Place">
+                        <div class="red-overlay"></div>
+                        <div class="project-block-content">
+                            <h3 class="project-block-title">Back at Our Place</h3>
+                            <p class="project-block-category">Compact Apartment</p>
+                        </div>
+                    </a>
+                </div>
+                
+                <div class="project-block">
+                    <div class="project-block-number">04.</div>
+                    <a href="projects/project-chalet-annecy.html">
+                        <img src="images/chalet/1.jpg" alt="Chalet at Annecy">
+                        <div class="red-overlay"></div>
+                        <div class="project-block-content">
+                            <h3 class="project-block-title">Chalet at Annecy</h3>
+                            <p class="project-block-category">Hotel Room</p>
+                        </div>
+                    </a>
+                </div>
+                
+                <div class="project-block">
+                    <div class="project-block-number">05.</div>
+                    <a href="projects/project-hold-on.html">
+                        <img src="/api/placeholder/600/400" alt="Hold On">
+                        <div class="red-overlay"></div>
+                        <div class="project-block-content">
+                            <h3 class="project-block-title">Hold On</h3>
+                            <p class="project-block-category">NYCxDesign How Do You Feel New York</p>
+                        </div>
+                    </a>
+                </div>
+                
+                <div class="project-block">
+                    <div class="project-block-number">06.</div>
+                    <a href="projects/project-eileen.html">
+                        <img src="/api/placeholder/600/400" alt="Eileen, Eileen, Eileen">
+                        <div class="red-overlay"></div>
+                        <div class="project-block-content">
+                            <h3 class="project-block-title">Eileen, Eileen, Eileen</h3>
+                            <p class="project-block-category">Compilation Work</p>
+                        </div>
+                    </a>
+                </div>
