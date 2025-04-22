@@ -1031,9 +1031,16 @@
         function setupBackgroundSlideshow() {
             const slideshowContainer = document.getElementById('bg-slideshow');
             const images = [
-                'images/fig1.jpg',
-                'images/fig2.jpeg',
-                'images/chalet/1.jpg' // Replace with your third image
+                // 'images/',
+                // 'images/',
+                'images/chalet/1.jpg',
+                'images/chalet/2.jpg',
+                'images/chalet/3.jpg',
+                'images/chalet/4.jpg',
+                'images/chalet/5.jpg',
+                'images/chalet/6.jpg',
+                'images/chalet/7.jpg',
+                'images/chalet/8.jpg',
             ];
             
             // Create slides from the images
@@ -1052,7 +1059,7 @@
                 slides[currentSlide].classList.remove('active');
                 currentSlide = (currentSlide + 1) % slides.length;
                 slides[currentSlide].classList.add('active');
-            }, 5000);
+            }, 2500);
         }
         
         // Mobile Menu Toggle
@@ -1172,7 +1179,7 @@
                 
                 <div class="project-content">
                     <div class="project-image-container">
-                        <img src="images/fig1.jpg" alt="Meet Me At Mott Street Project" class="project-detail-image">
+                        <img src="images/" alt="Meet Me At Mott Street Project" class="project-detail-image">
                     </div>
                     
                     <div class="project-description-container">
@@ -1313,7 +1320,7 @@
                 <div class="project-block featured">
                     <div class="project-block-number">01.</div>
                     <a href="projects/project-mott-street.html">
-                        <img src="images/fig1.jpg" alt="Meet Me At Mott Street">
+                        <img src="images/" alt="Meet Me At Mott Street">
                         <div class="red-overlay"></div>
                         <div class="project-block-content">
                             <h3 class="project-block-title">Meet Me At Mott Street</h3>
@@ -1325,7 +1332,7 @@
                 <div class="project-block">
                     <div class="project-block-number">02.</div>
                     <a href="projects/project-visual-merchandising.html">
-                        <img src="images/fig2.jpeg" alt="Visual Merchandising">
+                        <img src="images/" alt="Visual Merchandising">
                         <div class="red-overlay"></div>
                         <div class="project-block-content">
                             <h3 class="project-block-title">Visual Merchandising</h3>
