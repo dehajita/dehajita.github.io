@@ -311,6 +311,31 @@
             transform: translateY(0);
         }
         
+        /* Mood Board */
+        .mood-board {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .mood-item {
+            width: 300px;
+            height: 300px;
+            overflow: hidden;
+        }
+
+        .mood-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+
+        .mood-item:hover img {
+            transform: scale(1.1);
+        }
+
         /* Concept and Research Section */
         .concept-section {
             background-color: var(--green);
@@ -538,7 +563,7 @@
     
     <!-- Project Hero Section -->
     <section class="project-hero">
-        <img src="../images/" alt="Meet Me At Mott Street" class="project-hero-img">
+        <img src="../images/mottst/17.jpg" alt="Meet Me At Mott Street" class="project-hero-img">
         <div class="red-overlay"></div>
         <div class="project-hero-content">
             <div class="project-number">01.</div>
@@ -583,29 +608,6 @@
                     a sense of ownership and create a meaningful experience.
                 </p>
             </div>
-            
-            <div class="project-gallery">
-                <div class="project-gallery-item large">
-                    <img src="../images/" alt="Meet Me At Mott Street Overview" class="project-gallery-img">
-                    <div class="project-gallery-caption">
-                        Overview of the Mott Street public space intervention
-                    </div>
-                </div>
-                
-                <div class="project-gallery-item">
-                    <img src="../images/placeholder-1.jpg" alt="Material Exploration" class="project-gallery-img">
-                    <div class="project-gallery-caption">
-                        Material exploration and fabrication studies
-                    </div>
-                </div>
-                
-                <div class="project-gallery-item">
-                    <img src="../images/placeholder-2.jpg" alt="Community Interaction" class="project-gallery-img">
-                    <div class="project-gallery-caption">
-                        Community interaction with temporary furniture
-                    </div>
-                </div>
-            </div>
         </div>
     </section>
     
@@ -619,82 +621,128 @@
                 their makeshift furniture. Inspired by this, this project tries to find out the connection 
                 between indoor activities adapted to outdoor public places using makeshift furniture while 
                 addressing the problem of waste abundance in the area.
+
+                These images showcase my initial concept onhow the community would be able to use and interact
+                with the makeshift furniture made out of modular components that can be easily assembled and disassembled
+                without the need for specialized tools or expertise. This modular design allows for flexibility in
+                arrangement and adaptation to various spatial constraints and user needs.
             </p>
-            
-            <div class="concept-grid">
-                <div class="concept-item">
-                    <h3 class="concept-title">Incorporating a sense of domesticity</h3>
-                    <p class="concept-text">
-                        In an urban setting using softness in materiality.
-                    </p>
-                </div>
-                
-                <div class="concept-item">
-                    <h3 class="concept-title">Help engage with the community</h3>
-                    <p class="concept-text">
-                        By fostering a sense of ownership.
-                    </p>
-                </div>
-                
-                <div class="concept-item">
-                    <h3 class="concept-title">"Build and stack" concept</h3>
-                    <p class="concept-text">
-                        Making it easy to assemble based on needs.
-                    </p>
-                </div>
-            </div>
-            
-            <div class="project-gallery" style="margin-top: 4rem;">
+
+            <div class="project-gallery">
                 <div class="project-gallery-item">
-                    <img src="../images/placeholder-3.jpg" alt="Concept Collage 1" class="project-gallery-img">
-                </div>
-                
-                <div class="project-gallery-item">
-                    <img src="../images/placeholder-4.jpg" alt="Concept Collage 2" class="project-gallery-img">
-                </div>
-                
-                <div class="project-gallery-item large">
-                    <img src="../images/placeholder-5.jpg" alt="Site Plan" class="project-gallery-img">
+                    <img src="../images/mottst/1.jpg" alt="Incorporating a sense of domesticity" class="project-gallery-img">
                     <div class="project-gallery-caption">
-                        Site plans of selected areas in Mott Street
+                        Incorporating a sense of domesticity in an urban setting using softness in materiality.
+                    </div>
+                </div>
+
+                <div class="project-gallery-item">
+                    <img src="../images/mottst/2.jpg" alt="Help engage with the community" class="project-gallery-img">
+                    <div class="project-gallery-caption">
+                        Help engage with the community by fostering a sense of ownership.
+                    </div>
+                </div>
+
+                <div class="project-gallery-item">
+                    <img src="../images/mottst/3.jpg" alt='"Build and stack" concept' class="project-gallery-img">
+                    <div class="project-gallery-caption">
+                        "Build and stack" concept making it easy to assemble based on needs.
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    
-    <!-- Final Section -->
+
     <section class="project-content">
         <div class="container">
             <div class="project-section">
-                <h2 class="project-section-title">Building and Repurposing</h2>
+                <h2 class="project-section-title">building and repurposing</h2>
+            </div>
+
+            <div class="project-gallery">
+                <div class="project-gallery-item large">
+                    <img src="../images/mottst/4.jpg" alt="building and repurposing" class="project-gallery-img">
+                    <div class="project-gallery-caption">
+                        building and repurposing
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="project-content">
+        <div class="container">
+            <div class="project-section">
+                <h2 class="project-section-title">conceptualizing and modeling</h2>
                 <p class="project-text">
-                    By utilizing discarded fabric from various sources, such as used clothing 
-                    or upholstery scraps, we're reducing the demand for virgin materials and 
-                    minimizing textile waste.
+                    These models showcase the versatility of the "build and stack" furnitures,
+                    allowing users to interact and have a sense of ownership of their spaces.
                 </p>
+            </div>
+
+            <div class="project-gallery">
+                <div class="project-gallery-item large">
+                    <img src="../images/mottst/5.jpg" alt="conceptualizing and modeling" class="project-gallery-img">
+                    <div class="project-gallery-caption">
+                        conceptualizing and modeling
+                    </div>
+                </div>
+            </div>
+            <div class="project-section">
                 <p class="project-text">
-                    Repurposing plastic waste as a material addresses the issue of durability, 
-                    particularity in wet weather conditions. Additionally, repurposing plastic 
-                    prevents it from becoming thrown away in the landfill, contributing to 
-                    environmental sustainability by giving discarded materials a new purpose.
+                    I also started developing an additional concept for a modular planter to introduce more greenery
+                    to the neighborhood while serving a multifunctional purpose as a planter, compost bin, and storage
+                    container for vendors.
                 </p>
             </div>
             
             <div class="project-gallery">
-                <div class="project-gallery-item">
-                    <img src="../images/placeholder-6.jpg" alt="Material Detail 1" class="project-gallery-img">
-                </div>
-                
-                <div class="project-gallery-item">
-                    <img src="../images/placeholder-7.jpg" alt="Material Detail 2" class="project-gallery-img">
-                </div>
-                
                 <div class="project-gallery-item large">
-                    <img src="../images/placeholder-8.jpg" alt="Final Implementation" class="project-gallery-img">
+                    <img src="../images/mottst/6.jpg" alt="conceptualizing and modeling" class="project-gallery-img">
                     <div class="project-gallery-caption">
-                        Final implementation visualization
+                        conceptualizing and modeling
                     </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="project-content">
+        <div class="container">
+            <div class="project-section">
+                <h2 class="project-section-title"><b>site plans</b> <i>and</i> <b>sequence</b></h2>
+                <p class="project-text">
+                    Site plans of selected areas in Mott Street as concept studies, showing how
+                    the concept applies throughout the street.
+                </p>
+            </div>
+
+            <div class="project-gallery">
+                <div class="project-gallery-item">
+                    <img src="../images/mottst/7.jpg" alt="site plans and sequence" class="project-gallery-img">
+                    <div class="project-gallery-caption">
+                        site plans and sequence
+                    </div>
+                </div>
+                <div class="project-gallery-item">
+                    <img src="../images/mottst/8.jpg" alt="site plans and sequence" class="project-gallery-img">
+                    <div class="project-gallery-caption">
+                        site plans and sequence
+                    </div>
+                </div>
+            </div>
+            <div class="mood-board">
+                <div class="mood-item">
+                    <img src="../images/mottst/9.jpg" alt="1">
+                </div>
+                <div class="mood-item">
+                    <img src="../images/mottst/10.jpg" alt="2">
+                </div>
+                <div class="mood-item">
+                    <img src="../images/mottst/11.jpg" alt="3">
+                </div>
+                <div class="mood-item">
+                    <img src="../images/mottst/12.jpg" alt="4">
                 </div>
             </div>
         </div>
